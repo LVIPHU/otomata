@@ -1,0 +1,14 @@
+{
+  "Metadata": {
+    "title": "otomata",
+    "description": "Sản phẩm tốt nhất"
+  },
+  "IndexPage": {
+    "title": "ví dụ next-intl",
+    "description": "Đây là một ví dụ cơ bản mô tả cách sử dụng <code>next-intl</code> với Bộ Định Tuyến App của Next.js. Hãy thử thay đổi ngôn ngữ ở góc trên bên phải và xem nội dung thay đổi như thế nào."
+  },
+  "LocaleSwitcher": {
+    "label": "Đổi ngôn ngữ",
+    "locale": "{locale, select, vi {VI Tiếng Việt} en {🇺🇸 Tiếng Anh} other {Không xác định}}"
+  }
+}
