@@ -2,6 +2,7 @@ import { Roboto } from "next/font/google";
 import { ReactNode } from "react";
 import {locales} from '@/libs/next-intl/config';
 import {getTranslations, unstable_setRequestLocale} from 'next-intl/server';
+import { ThemeProvider } from "@/provider/theme";
 
 const roboto = Roboto({
   weight:['100', '300', '400', '500', '700', '900'],
@@ -38,7 +39,17 @@ export default async function LocaleLayout({
     unstable_setRequestLocale(locale);
   return (
     <html lang={locale}>
-      <body className={roboto.className}>{children}</body>
+      <body className={roboto.className}>
+          <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+          >
+
+            {children}
+          </ThemeProvider>
+      </body>
     </html>
   );
 }
