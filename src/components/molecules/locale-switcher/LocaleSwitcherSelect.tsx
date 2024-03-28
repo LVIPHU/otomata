@@ -10,11 +10,12 @@ type Props = {
     placeholder: string;
 };
 
-export default function LocaleSwitcherSelect({
-                                                 children,
-                                                 defaultValue,
-                                                 placeholder
-                                             }: Props) {
+export default function LocaleSwitcherSelect(
+    {
+     children,
+     defaultValue,
+     placeholder
+    }: Props) {
     const router = useRouter();
     const [isPending, startTransition] = useTransition();
     const pathname = usePathname();

@@ -1,8 +1,10 @@
 import { Roboto } from "next/font/google";
 import { ReactNode } from "react";
-import {locales} from '@/libs/next-intl/config';
-import {getTranslations, unstable_setRequestLocale} from 'next-intl/server';
+import { locales } from '@/libs/next-intl/config';
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 import { ThemeProvider } from "@/provider/theme";
+import Footer from "@/components/organisms/footer";
+import Navbar from "@/components/organisms/navbar";
 
 const roboto = Roboto({
   weight:['100', '300', '400', '500', '700', '900'],
@@ -20,11 +22,8 @@ export function generateStaticParams() {
     return locales.map((locale) => ({locale}));
 }
 
-export async function generateMetadata({
-                                           params: {locale}
-                                       }: Omit<Props, 'children'>) {
+export async function generateMetadata({ params: { locale } }: Omit<Props, 'children'>) {
     const t = await getTranslations({locale, namespace: 'Metadata'});
-
     return {
         title: t('title'),
         description: t('description')
@@ -32,13 +31,10 @@ export async function generateMetadata({
 }
 
 
-export default async function LocaleLayout({
-                                         children,
-                                         params: {locale}
-                                     }: Props) {
-    unstable_setRequestLocale(locale);
+export default async function LocaleLayout({children, params: {locale}}: Props) {
+  unstable_setRequestLocale(locale);
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
       <body className={roboto.className}>
           <ThemeProvider
               attribute="class"
@@ -46,8 +42,9 @@ export default async function LocaleLayout({
               enableSystem
               disableTransitionOnChange
           >
-
-            {children}
+              <Navbar/>
+                {children}
+              <Footer/>
           </ThemeProvider>
       </body>
     </html>

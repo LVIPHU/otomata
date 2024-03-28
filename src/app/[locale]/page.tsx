@@ -8,15 +8,14 @@ import {
   CardTitle,
 } from "@/components/atoms/card"
 import {unstable_setRequestLocale} from 'next-intl/server';
-import LocaleSwitcher from "@/components/molecules/LocaleSwitcher";
-import {ThemeToggle} from "@/components/molecules/ThemeToggle";
+import LocaleSwitcher from "@/components/molecules/locale-switcher";
+import {ThemeToggle} from "@/components/molecules/theme-toggle";
 
 type Props = {
   params: {locale: string};
 };
 
 export default function Home({params: {locale}}: Props) {
-  // Enable static rendering
   unstable_setRequestLocale(locale);
 
   return (
