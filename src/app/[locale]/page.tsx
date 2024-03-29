@@ -1,7 +1,6 @@
 import { Button } from '@/components/atoms/button'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/atoms/card'
 import { unstable_setRequestLocale } from 'next-intl/server'
-import LocaleSwitcher from '@/components/molecules/locale-switcher'
 import { ThemeToggle } from '@/components/molecules/theme-toggle'
 
 type Props = {
@@ -13,7 +12,6 @@ export default function Home({ params: { locale } }: Props) {
 
   return (
     <main className='flex min-h-screen flex-col items-center justify-between p-24'>
-      <LocaleSwitcher />
       <ThemeToggle />
       <Button>Hello</Button>
       <Card>

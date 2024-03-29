@@ -18,9 +18,9 @@ export default function ChooseCountryRegion() {
     {
       title: 'Asia Pacific',
       children: [
-        { label: 'Australia', locale: 'en' },
-        { label: '中国大陆', locale: 'en' },
-        { label: 'Việt Nam', locale: 'vi' }
+        // { label: 'Australia', locale: 'en' },
+        // { label: '中国大陆', locale: 'en' },
+        { label: 'Việt Nam', locale: 'vi-VN' }
       ]
     },
     {
@@ -33,7 +33,7 @@ export default function ChooseCountryRegion() {
     },
     {
       title: 'The United States, Canada, and Puerto Rico',
-      children: [{ label: 'United States', locale: 'en' }]
+      children: [{ label: 'United States', locale: 'en-US' }]
     }
   ]
   return (
