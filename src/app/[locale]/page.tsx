@@ -1,27 +1,20 @@
-import {Button} from "@/components/atoms/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/atoms/card"
-import {unstable_setRequestLocale} from 'next-intl/server';
-import LocaleSwitcher from "@/components/molecules/locale-switcher";
-import {ThemeToggle} from "@/components/molecules/theme-toggle";
+import { Button } from '@/components/atoms/button'
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/atoms/card'
+import { unstable_setRequestLocale } from 'next-intl/server'
+import LocaleSwitcher from '@/components/molecules/locale-switcher'
+import { ThemeToggle } from '@/components/molecules/theme-toggle'
 
 type Props = {
-  params: {locale: string};
-};
+  params: { locale: string }
+}
 
-export default function Home({params: {locale}}: Props) {
-  unstable_setRequestLocale(locale);
+export default function Home({ params: { locale } }: Props) {
+  unstable_setRequestLocale(locale)
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className='flex min-h-screen flex-col items-center justify-between p-24'>
       <LocaleSwitcher />
-      <ThemeToggle/>
+      <ThemeToggle />
       <Button>Hello</Button>
       <Card>
         <CardHeader>
@@ -36,5 +29,5 @@ export default function Home({params: {locale}}: Props) {
         </CardFooter>
       </Card>
     </main>
-  );
+  )
 }
