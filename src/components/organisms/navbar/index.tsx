@@ -39,7 +39,7 @@ export default function Navbar() {
     };
 
     return (
-        <nav className={'container mx-auto ps-5 pe-5'}>
+        <nav className={'container-content'}>
             <ul className={'list-none flex justify-between items-center'}>
                 {renderMenu(menuItems)}
             </ul>

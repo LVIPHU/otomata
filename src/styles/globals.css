@@ -76,5 +76,7 @@
 }
 
 @layer utilities {
-
+  .container-content {
+    @apply container mx-auto ps-6 pe-6
+  }
 }
