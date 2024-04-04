@@ -12,10 +12,6 @@ interface FooterItem {
 export default function ChooseCountryRegion() {
   const data: FooterItem[] = [
     {
-      title: 'Africa, Middle East, and India',
-      children: []
-    },
-    {
       title: 'Asia Pacific',
       children: [
         // { label: 'Australia', locale: 'en' },
@@ -24,15 +20,7 @@ export default function ChooseCountryRegion() {
       ]
     },
     {
-      title: 'Europe',
-      children: []
-    },
-    {
-      title: 'Latin America and the Caribbean',
-      children: []
-    },
-    {
-      title: 'The United States, Canada, and Puerto Rico',
+      title: 'The United States',
       children: [{ label: 'United States', locale: 'en-US' }]
     }
   ]

@@ -6,8 +6,12 @@ export const pathnames = {
   '/': '/',
   '/choose-country-region': '/choose-country-region',
   '/sign-in': {
-    "vi-VN": '/dang-nhap',
-    "en-US": '/sign-in'
+    'vi-VN': '/dang-nhap',
+    'en-US': '/sign-in'
+  },
+  '/sign-up': {
+    'vi-VN': '/dang-ky',
+    'en-US': '/sign-up'
   }
 } satisfies Pathnames<typeof locales>
 
