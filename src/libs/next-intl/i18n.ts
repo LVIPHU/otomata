@@ -9,11 +9,9 @@ export default getRequestConfig(async ({ locale }) => {
   if (!locales.includes(locale as any)) notFound()
 
   return {
-    messages: (
-      await (locale === 'vi-VN'
-        ? // When using Turbopack, this will enable HMR for `en`
-          import('../../../public/locales/vi-VN.json')
-        : import(`../../../public/locales/${locale}.json`))
-    ).default
+    messages: {
+      ...(await import(`../../../public/locales/${locale}/common.json`)).default,
+      ...(await import(`../../../public/locales/${locale}/sign-in.json`)).default
+    }
   }
 })

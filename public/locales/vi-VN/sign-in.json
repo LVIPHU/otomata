@@ -1,0 +1,14 @@
+{
+  "SignIn": {
+    "title": "Tạo Tài Khoản Otomata Của Bạn",
+    "form": {
+      "username": {
+        "label": "tên đăng nhập",
+        "placeholder": "Nhập tên đăng nhập",
+        "error": {
+          "min": "Chuỗi phải chứa ít nhất 2 ký tự"
+        }
+      }
+    }
+  }
+}

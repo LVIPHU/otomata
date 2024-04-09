@@ -1,10 +1,10 @@
 import { Roboto } from 'next/font/google'
 import { ReactNode } from 'react'
 import { locales } from '@/libs/next-intl/config'
-import { getTranslations, unstable_setRequestLocale } from 'next-intl/server'
-import { ThemeProvider } from '@/provider/theme'
+import { getTranslations } from 'next-intl/server'
 import Footer from '@/components/organisms/footer'
-import Navbar from '@/components/organisms/navbar'
+import Header from '@/components/organisms/header'
+import ProviderRegistry from '@/provider'
 
 const roboto = Roboto({
   weight: ['100', '300', '400', '500', '700', '900'],
@@ -30,16 +30,15 @@ export async function generateMetadata({ params: { locale } }: Omit<Props, 'chil
   }
 }
 
-export default async function LocaleLayout({ children, params: { locale } }: Props) {
-  unstable_setRequestLocale(locale)
+export default async function LocaleLayout({ children, params }: Props) {
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html lang={params.locale} suppressHydrationWarning>
       <body className={roboto.className}>
-        <ThemeProvider attribute='class' defaultTheme='system' enableSystem disableTransitionOnChange>
-          <Navbar />
+        <ProviderRegistry params={params}>
+          <Header />
           {children}
           <Footer />
-        </ThemeProvider>
+        </ProviderRegistry>
       </body>
     </html>
   )

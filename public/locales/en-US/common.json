@@ -1,0 +1,20 @@
+{
+  "Metadata": {
+    "description": "Best product",
+    "title": "Otomata"
+  },
+  "Navbar": {
+    "company": "Company",
+    "contact": "Contact",
+    "country": "United States",
+    "customer": "Customers",
+    "docs": "Docs",
+    "preferences": "Preferences",
+    "pricing": "Pricing",
+    "products": "Products",
+    "resources": "Resources",
+    "sign-in": "Sign In",
+    "sign-up": "Sign Up",
+    "solutions": "Solutions"
+  }
+}
