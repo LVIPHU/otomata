@@ -1,3 +1,3 @@
 export default function TermsOfService() {
-    return <div>Terms of Service</div>
+  return <div>Terms of Service</div>
 }

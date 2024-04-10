@@ -1,3 +1,3 @@
 export default function PrivacyPolicy() {
-    return <div>Privacy Policy</div>
+  return <div>Privacy Policy</div>
 }

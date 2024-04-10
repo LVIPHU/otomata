@@ -6,7 +6,7 @@ import { Button } from '@/components/atoms/button'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/atoms/form'
 import { Input } from '@/components/atoms/input'
 import { RegisterBodyType, RegisterBody } from '@/libs/utils'
-import NavigationLink from "@/components/molecules/navigation-link";
+import NavigationLink from '@/components/molecules/navigation-link'
 
 export default function SignUpTemplates() {
   const form = useForm<RegisterBodyType>({
@@ -73,9 +73,12 @@ export default function SignUpTemplates() {
           </Button>
         </form>
       </Form>
-        <div className={'flex justify-center items-center py-8'}>
-            <p>By joining, you agree to our <NavigationLink href={'/legal/privacy-policy'}>Terms of Service</NavigationLink> and <NavigationLink href={'/legal/terms'}>Privacy Policy</NavigationLink></p>
-        </div>
+      <div className={'flex justify-center items-center py-8'}>
+        <p>
+          By joining, you agree to our <NavigationLink href={'/legal/privacy-policy'}>Terms of Service</NavigationLink>{' '}
+          and <NavigationLink href={'/legal/terms'}>Privacy Policy</NavigationLink>
+        </p>
+      </div>
     </div>
   )
 }
