@@ -1,7 +1,15 @@
 import { useTranslations } from 'next-intl'
-import NavigationLink from '@/components/molecules/navigation-link'
+import NavigationLink from '@/components/atoms/navigation-link'
 import { Button } from '@/components/atoms/button'
 import { MenuItem } from '@/types/app'
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/atoms/navigation-menu"
 
 export default function Header() {
   const t = useTranslations('Navbar')
@@ -22,29 +30,34 @@ export default function Header() {
 
   const renderMenu = (items: MenuItem[]) => {
     return items.map(({ href, content }, index) => (
-      <li key={index} className={'flex items-center justify-center'}>
+      <NavigationMenuItem key={index}>
         {href ? (
-          <NavigationLink href={href} className={'px-3 py-2'}>
-            <span>{content}</span>
-          </NavigationLink>
+          <NavigationMenuLink href={href}>
+            <span className={'text-sm font-medium'}>
+              {content}
+            </span>
+          </NavigationMenuLink>
         ) : (
-          <button className={'px-3 py-2'}>
-            <span>{content}</span>
-          </button>
+          <>
+            <NavigationMenuTrigger>{content}</NavigationMenuTrigger>
+            <NavigationMenuContent>
+              <span>{content}</span>
+            </NavigationMenuContent>
+          </>
         )}
-      </li>
+      </NavigationMenuItem>
     ))
   }
 
   return (
     <header className={'container-content flex py-4 sticky top-0 bg-background'}>
       <div className={'flex justify-between items-center w-full'}>
-        <div className={'flex items-center'}>
+        <NavigationMenu>
           <div className={'mr-8'}>LOGO</div>
-          <nav>
-            <ul className={'list-none flex justify-between items-center relative'}>{renderMenu(menuItems)}</ul>
-          </nav>
-        </div>
+          <NavigationMenuList>
+            {renderMenu(menuItems)}
+          </NavigationMenuList>
+        </NavigationMenu>
         <div className={'flex gap-3'}>
           {headerRightItems.map(({ href, content }, index) => (
             <NavigationLink href={href || '/'} key={index}>

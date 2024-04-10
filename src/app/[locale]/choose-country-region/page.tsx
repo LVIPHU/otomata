@@ -1,4 +1,4 @@
-import NavigationLink from '@/components/molecules/navigation-link'
+import NavigationLink from '@/components/atoms/navigation-link'
 import { AppLocales } from '@/libs/next-intl/config'
 import { cn } from '@/libs/utils'
 

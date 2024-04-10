@@ -6,7 +6,7 @@ import { useTheme } from 'next-themes'
 import { cn } from '@/libs/utils'
 import { Label } from '@/components/atoms/label'
 import { Button } from '@/components/atoms/button'
-import NavigationLink from '@/components/molecules/navigation-link'
+import NavigationLink from '@/components/atoms/navigation-link'
 
 const data = [
   {

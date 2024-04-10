@@ -6,7 +6,7 @@ import { Button } from '@/components/atoms/button'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/atoms/form'
 import { Input } from '@/components/atoms/input'
 import { RegisterBodyType, RegisterBody } from '@/libs/utils'
-import NavigationLink from '@/components/molecules/navigation-link'
+import NavigationLink from '@/components/atoms/navigation-link'
 
 export default function SignUpTemplates() {
   const form = useForm<RegisterBodyType>({

@@ -1,28 +1,28 @@
 import * as React from 'react'
 import { MenuItem } from '@/types/app'
 import { useTranslations } from 'next-intl'
-import NavigationLink from '@/components/molecules/navigation-link'
+import NavigationLink from '@/components/atoms/navigation-link'
 import { Label } from '@/components/atoms/label'
 import Preferences from '@/components/molecules/preferences'
 
 export default function Footer() {
   const t = useTranslations('Navbar')
   const menuItems: MenuItem[] = [
-    { content: t('products'), children: [{ content: 'tool', href: '/' }] },
+    { content: t('products'), children: [{ title: 'tool', href: '/' }] },
     {
       content: t('resources'),
       children: [
-        { content: t('docs'), href: '/' },
-        { content: t('pricing'), href: '/' },
-        { content: t('customer'), href: '/' }
+        { title: t('docs'), href: '/' },
+        { title: t('pricing'), href: '/' },
+        { title: t('customer'), href: '/' }
       ]
     },
     {
       content: t('company'),
       children: [
-        { content: t('docs'), href: '/' },
-        { content: t('pricing'), href: '/' },
-        { content: t('customer'), href: '/' }
+        { title: t('docs'), href: '/' },
+        { title: t('pricing'), href: '/' },
+        { title: t('customer'), href: '/' }
       ]
     }
   ]
@@ -37,7 +37,7 @@ export default function Footer() {
           {children &&
             children.map((item, index) => (
               <li key={index} className={'py-1'}>
-                <NavigationLink href={item.href || '/'}>{item.content}</NavigationLink>
+                <NavigationLink href={item.href || '/'}>{item.title}</NavigationLink>
               </li>
             ))}
         </ul>
@@ -46,7 +46,7 @@ export default function Footer() {
   }
 
   return (
-    <footer className={'border-t border-gray-400 dark:bg-gray-900'}>
+    <footer className={'border-t border-input'}>
       <nav className={'container-content py-12 grid grid-cols-5 gap-6'}>
         <div className={'flex flex-col pt-2 gap-2'}>
           <div>LOGO</div>
