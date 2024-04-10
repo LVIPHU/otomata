@@ -12,6 +12,14 @@ export const pathnames = {
   '/sign-up': {
     'vi-VN': '/dang-ky',
     'en-US': '/sign-up'
+  },
+  '/legal/privacy-policy': {
+    'vi-VN': '/hop-phap/chinh-sach-bao-mat',
+    'en-US': '/legal/privacy-policy'
+  },
+  '/legal/terms': {
+    'vi-VN': '/hop-phap/dieu-khoan-dich-vu',
+    'en-US': '/legal/terms'
   }
 } satisfies Pathnames<typeof locales>
 

@@ -37,7 +37,7 @@ export default function Header() {
   }
 
   return (
-    <header className={'container-content flex my-4'}>
+    <header className={'container-content flex py-4 sticky top-0 bg-background'}>
       <div className={'flex justify-between items-center w-full'}>
         <div className={'flex items-center'}>
           <div className={'mr-8'}>LOGO</div>
