@@ -8,6 +8,7 @@ import { cn } from '@/libs/utils'
 
 export default function NavigationLink<Pathname extends AppPathnames>({
   href,
+  className,
   ...rest
 }: ComponentProps<typeof Link<Pathname>>) {
   const selectedLayoutSegment = useSelectedLayoutSegment()
@@ -18,8 +19,8 @@ export default function NavigationLink<Pathname extends AppPathnames>({
     <Link
       aria-current={isActive ? 'page' : undefined}
       className={cn(
-        'no-underline whitespace-nowrap transition-colors'
-        // isActive ? 'text-white' : 'text-gray-400 hover:text-gray-200'
+        'no-underline whitespace-nowrap transition-colors',
+          className
       )}
       href={href}
       {...rest}
