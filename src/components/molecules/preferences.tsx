@@ -1,12 +1,18 @@
 'use client'
 import * as React from 'react'
+import dynamic from 'next/dynamic';
+
 import { useTranslations } from 'next-intl'
 import { Computer, Moon, Sun } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import { cn } from '@/libs/utils'
 import { Label } from '@/components/atoms/label'
-import { Button } from '@/components/atoms/button'
 import NavigationLink from '@/components/atoms/navigation-link'
+
+const Button = dynamic(() =>
+    import('../atoms/button').then(module => module.Button), {
+    ssr: false,
+});
 
 const data = [
   {

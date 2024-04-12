@@ -137,22 +137,26 @@ export default function Header() {
     { content: <Button>{t('sign-up')}</Button>, href: '/sign-up' }
   ]
 
-  const ListItem = ( props: MenuItemChildren ) => {
+  const ListItem = ( items: MenuItemChildren[] | undefined ) => {
     return (
-        <li>
-          <NavigationMenuLink href={props.href ?? '/'}>
-            <div
-                className={cn(
-                    "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-                )}
-            >
-              <div className="text-sm font-medium leading-none">{props.title}</div>
-              <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                {props.description}
-              </p>
-            </div>
-          </NavigationMenuLink>
-        </li>
+        <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+            {items && items.map((item, index) => (
+                <li key={index}>
+                    <NavigationMenuLink href={item.href ?? '/'}>
+                        <div
+                            className={cn(
+                                "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                            )}
+                        >
+                            <div className="text-sm font-medium leading-none">{item.title}</div>
+                            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                                {item.description}
+                            </p>
+                        </div>
+                    </NavigationMenuLink>
+                </li>
+            ))}
+        </ul>
     )
   }
 
@@ -167,11 +171,7 @@ export default function Header() {
           <>
             <NavigationMenuTrigger>{content}</NavigationMenuTrigger>
             <NavigationMenuContent>
-              <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                {children && children.map((item) => (
-                    ListItem(item)
-                ))}
-              </ul>
+                {ListItem(children)}
             </NavigationMenuContent>
           </>
         )}
