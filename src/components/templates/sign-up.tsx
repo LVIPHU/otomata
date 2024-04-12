@@ -23,7 +23,7 @@ export default function SignUpTemplates() {
   }
 
   return (
-    <div className={'flex flex-col gap-5 justify-center items-center pt-32'}>
+    <div className={'flex flex-col gap-5 justify-center items-center'}>
       <div className={'w-[400px]'}>
         <h1 className={'text-5xl font-black text-center'}>Create Your Otomata Account</h1>
       </div>

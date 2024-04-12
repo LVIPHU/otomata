@@ -7,7 +7,7 @@ export type MenuItem = {
   children?: {
     title: string
     href?: AppPathnames
-    description?:string
+    description?: string
     icon?: ReactElement
   }[]
 }

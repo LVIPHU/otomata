@@ -1,15 +1,15 @@
-"use client"
+'use client'
 import * as React from 'react'
 import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu'
 import { cva } from 'class-variance-authority'
 import { ChevronDown } from 'lucide-react'
 
 import { cn } from '@/libs/utils'
-import {AppPathnames} from "@/libs/next-intl/config";
-import {ComponentProps} from "react";
-import {Link} from "@/libs/next-intl/navigation";
-import NextLink from 'next/link';
-import {useSelectedLayoutSegment} from "next/navigation";
+import { AppPathnames } from '@/libs/next-intl/config'
+import { ComponentProps } from 'react'
+import { Link } from '@/libs/next-intl/navigation'
+import NextLink from 'next/link'
+import { useSelectedLayoutSegment } from 'next/navigation'
 
 const NavigationMenu = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Root>,
@@ -84,17 +84,17 @@ function NavigationMenuLink<Pathname extends AppPathnames>({ href, ...rest }: Co
   const pathname = selectedLayoutSegment ? `/${selectedLayoutSegment}` : '/'
   const isActive = pathname === href
   return (
-      <NavigationMenuPrimitive.Link asChild active={isActive}>
-        <NextLink
-            aria-current={isActive ? 'page' : undefined}
-            className={cn(
-                'no-underline whitespace-nowrap transition-colors'
-                // isActive ? 'text-white' : 'text-gray-400 hover:text-gray-200'
-            )}
-            href={href}
-            {...rest}
-        />
-      </NavigationMenuPrimitive.Link>
+    <NavigationMenuPrimitive.Link asChild active={isActive}>
+      <NextLink
+        aria-current={isActive ? 'page' : undefined}
+        className={cn(
+          'no-underline whitespace-nowrap transition-colors'
+          // isActive ? 'text-white' : 'text-gray-400 hover:text-gray-200'
+        )}
+        href={href}
+        {...rest}
+      />
+    </NavigationMenuPrimitive.Link>
   )
 }
 

@@ -8,8 +8,8 @@ import {
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@/components/atoms/navigation-menu"
+  NavigationMenuTrigger
+} from '@/components/atoms/navigation-menu'
 
 export default function Header() {
   const t = useTranslations('Navbar')
@@ -33,9 +33,7 @@ export default function Header() {
       <NavigationMenuItem key={index}>
         {href ? (
           <NavigationMenuLink href={href}>
-            <span className={'text-sm font-medium'}>
-              {content}
-            </span>
+            <span className={'text-sm font-medium'}>{content}</span>
           </NavigationMenuLink>
         ) : (
           <>
@@ -54,13 +52,11 @@ export default function Header() {
       <div className={'flex justify-between items-center w-full'}>
         <NavigationMenu>
           <div className={'mr-8'}>LOGO</div>
-          <NavigationMenuList>
-            {renderMenu(menuItems)}
-          </NavigationMenuList>
+          <NavigationMenuList>{renderMenu(menuItems)}</NavigationMenuList>
         </NavigationMenu>
         <div className={'flex gap-3'}>
           {headerRightItems.map(({ href, content }, index) => (
-            <NavigationLink href={href || '/'} key={index}>
+            <NavigationLink key={index} href={href || '/'} passHref>
               {content}
             </NavigationLink>
           ))}

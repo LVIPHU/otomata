@@ -1,3 +1,3 @@
 export default function SignIn() {
-  return <div className={'min-h-screen'}>Sign In</div>
+  return <div>Sign In</div>
 }

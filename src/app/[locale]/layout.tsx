@@ -15,6 +15,7 @@ const roboto = Roboto({
 
 type Props = {
   children: ReactNode
+  modal: ReactNode
   params: { locale: string }
 }
 
@@ -30,13 +31,14 @@ export async function generateMetadata({ params: { locale } }: Omit<Props, 'chil
   }
 }
 
-export default async function LocaleLayout({ children, params }: Props) {
+export default async function LocaleLayout({ children, modal, params }: Props) {
   return (
     <html lang={params.locale} suppressHydrationWarning>
       <body className={roboto.className}>
         <ProviderRegistry params={params}>
           <Header />
           {children}
+          {modal}
           <Footer />
         </ProviderRegistry>
       </body>

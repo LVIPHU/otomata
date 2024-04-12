@@ -18,10 +18,7 @@ export default function NavigationLink<Pathname extends AppPathnames>({
   return (
     <Link
       aria-current={isActive ? 'page' : undefined}
-      className={cn(
-        'no-underline whitespace-nowrap transition-colors',
-          className
-      )}
+      className={cn('no-underline whitespace-nowrap transition-colors', className)}
       href={href}
       {...rest}
     />
