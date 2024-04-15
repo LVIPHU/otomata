@@ -59,9 +59,9 @@ export default function SignInTemplates() {
           </Button>
         </form>
       </Form>
-        <div className={'flex justify-center items-center py-8'}>
-            <NavigationLink href={'/sign-up'}>{"Don't have an account? Sign Up"}</NavigationLink>
-        </div>
+      <div className={'flex justify-center items-center py-8'}>
+        <NavigationLink href={'/sign-up'}>{"Don't have an account? Sign Up"}</NavigationLink>
+      </div>
     </div>
   )
 }
