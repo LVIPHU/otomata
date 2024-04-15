@@ -1,8 +1,5 @@
 'use client'
-import {
-  Dialog,
-  DialogContent,
-} from '@/components/atoms/dialog'
+import { Dialog, DialogContent } from '@/components/atoms/dialog'
 import { useRouter } from 'next/navigation'
 import SignUpTemplates from '@/components/templates/sign-up'
 

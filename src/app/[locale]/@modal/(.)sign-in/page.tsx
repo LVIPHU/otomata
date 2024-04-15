@@ -1,9 +1,7 @@
 'use client'
-import {
-  Dialog,
-  DialogContent,
-} from '@/components/atoms/dialog'
+import { Dialog, DialogContent } from '@/components/atoms/dialog'
 import { useRouter } from 'next/navigation'
+import SignInTemplates from '@/components/templates/sign-in'
 
 export default function SignIn() {
   const router = useRouter()
@@ -14,7 +12,9 @@ export default function SignIn() {
   }
   return (
     <Dialog defaultOpen={true} onOpenChange={onDismiss}>
-      <DialogContent>Sign In</DialogContent>
+      <DialogContent>
+        <SignInTemplates />
+      </DialogContent>
     </Dialog>
   )
 }

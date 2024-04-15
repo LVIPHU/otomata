@@ -1,7 +1,7 @@
 import { useTranslations } from 'next-intl'
 import NavigationLink from '@/components/atoms/navigation-link'
 import { Button } from '@/components/atoms/button'
-import {MenuItem, MenuItemChildren} from '@/types/app'
+import { MenuItem, MenuItemChildren } from '@/types/app'
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -10,123 +10,123 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger
 } from '@/components/atoms/navigation-menu'
-import {cn} from "@/libs/utils";
+import { cn } from '@/libs/utils'
 
 export default function Header() {
   const t = useTranslations('Navbar')
 
   const menuItems: MenuItem[] = [
-    { content: t('products'), children:[
+    {
+      content: t('products'),
+      children: [
         {
-          title: "Alert Dialog",
-          href: "/",
+          title: 'Alert Dialog',
+          href: '/',
+          description: 'A modal dialog that interrupts the user with important content and expects a response.'
+        },
+        {
+          title: 'Hover Card',
+          href: '/',
+          description: 'For sighted users to preview content available behind a link.'
+        },
+        {
+          title: 'Progress',
+          href: '/',
           description:
-              "A modal dialog that interrupts the user with important content and expects a response.",
+            'Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.'
         },
         {
-          title: "Hover Card",
-          href: "/",
+          title: 'Scroll-area',
+          href: '/',
+          description: 'Visually or semantically separates content.'
+        },
+        {
+          title: 'Tabs',
+          href: '/',
+          description: 'A set of layered sections of content—known as tab panels—that are displayed one at a time.'
+        },
+        {
+          title: 'Tooltip',
+          href: '/',
           description:
-              "For sighted users to preview content available behind a link.",
+            'A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.'
+        }
+      ]
+    },
+    {
+      content: t('solutions'),
+      children: [
+        {
+          title: 'Alert Dialog',
+          href: '/',
+          description: 'A modal dialog that interrupts the user with important content and expects a response.'
         },
         {
-          title: "Progress",
-          href: "/",
+          title: 'Hover Card',
+          href: '/',
+          description: 'For sighted users to preview content available behind a link.'
+        },
+        {
+          title: 'Progress',
+          href: '/',
           description:
-              "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
+            'Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.'
         },
         {
-          title: "Scroll-area",
-          href: "/",
-          description: "Visually or semantically separates content.",
+          title: 'Scroll-area',
+          href: '/',
+          description: 'Visually or semantically separates content.'
         },
         {
-          title: "Tabs",
-          href: "/",
+          title: 'Tabs',
+          href: '/',
+          description: 'A set of layered sections of content—known as tab panels—that are displayed one at a time.'
+        },
+        {
+          title: 'Tooltip',
+          href: '/',
           description:
-              "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
+            'A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.'
+        }
+      ]
+    },
+    {
+      content: t('resources'),
+      children: [
+        {
+          title: 'Alert Dialog',
+          href: '/',
+          description: 'A modal dialog that interrupts the user with important content and expects a response.'
         },
         {
-          title: "Tooltip",
-          href: "/",
+          title: 'Hover Card',
+          href: '/',
+          description: 'For sighted users to preview content available behind a link.'
+        },
+        {
+          title: 'Progress',
+          href: '/',
           description:
-              "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+            'Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.'
         },
-      ]},
-    { content: t('solutions'), children:[
         {
-          title: "Alert Dialog",
-          href: "/",
+          title: 'Scroll-area',
+          href: '/',
+          description: 'Visually or semantically separates content.'
+        },
+        {
+          title: 'Tabs',
+          href: '/',
+          description: 'A set of layered sections of content—known as tab panels—that are displayed one at a time.'
+        },
+        {
+          title: 'Tooltip',
+          href: '/',
           description:
-              "A modal dialog that interrupts the user with important content and expects a response.",
-        },
-        {
-          title: "Hover Card",
-          href: "/",
-          description:
-              "For sighted users to preview content available behind a link.",
-        },
-        {
-          title: "Progress",
-          href: "/",
-          description:
-              "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
-        },
-        {
-          title: "Scroll-area",
-          href: "/",
-          description: "Visually or semantically separates content.",
-        },
-        {
-          title: "Tabs",
-          href: "/",
-          description:
-              "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-        },
-        {
-          title: "Tooltip",
-          href: "/",
-          description:
-              "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
-        },
-      ]},
-    { content: t('resources'), children:[
-        {
-          title: "Alert Dialog",
-          href: "/",
-          description:
-              "A modal dialog that interrupts the user with important content and expects a response.",
-        },
-        {
-          title: "Hover Card",
-          href: "/",
-          description:
-              "For sighted users to preview content available behind a link.",
-        },
-        {
-          title: "Progress",
-          href: "/",
-          description:
-              "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
-        },
-        {
-          title: "Scroll-area",
-          href: "/",
-          description: "Visually or semantically separates content.",
-        },
-        {
-          title: "Tabs",
-          href: "/",
-          description:
-              "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-        },
-        {
-          title: "Tooltip",
-          href: "/",
-          description:
-              "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
-        },
-      ]},
+            'A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.'
+        }
+      ]
+    },
     { content: t('docs'), href: '/' },
     { content: t('pricing'), href: '/' }
   ]
@@ -137,26 +137,25 @@ export default function Header() {
     { content: <Button>{t('sign-up')}</Button>, href: '/sign-up' }
   ]
 
-  const ListItem = ( items: MenuItemChildren[] | undefined ) => {
+  const ListItem = (items: MenuItemChildren[] | undefined) => {
     return (
-        <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-            {items && items.map((item, index) => (
-                <li key={index}>
-                    <NavigationMenuLink href={item.href ?? '/'}>
-                        <div
-                            className={cn(
-                                "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-                            )}
-                        >
-                            <div className="text-sm font-medium leading-none">{item.title}</div>
-                            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                                {item.description}
-                            </p>
-                        </div>
-                    </NavigationMenuLink>
-                </li>
-            ))}
-        </ul>
+      <ul className='grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]'>
+        {items &&
+          items.map((item, index) => (
+            <li key={index}>
+              <NavigationMenuLink href={item.href ?? '/'}>
+                <div
+                  className={cn(
+                    'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground'
+                  )}
+                >
+                  <div className='text-sm font-medium leading-none'>{item.title}</div>
+                  <p className='line-clamp-2 text-sm leading-snug text-muted-foreground'>{item.description}</p>
+                </div>
+              </NavigationMenuLink>
+            </li>
+          ))}
+      </ul>
     )
   }
 
@@ -170,9 +169,7 @@ export default function Header() {
         ) : (
           <>
             <NavigationMenuTrigger>{content}</NavigationMenuTrigger>
-            <NavigationMenuContent>
-                {ListItem(children)}
-            </NavigationMenuContent>
+            <NavigationMenuContent>{ListItem(children)}</NavigationMenuContent>
           </>
         )}
       </NavigationMenuItem>

@@ -1,3 +1,9 @@
+import SignInTemplates from '@/components/templates/sign-in'
+
 export default function SignIn() {
-  return <div>Sign In</div>
+  return (
+    <div>
+      <SignInTemplates />
+    </div>
+  )
 }
