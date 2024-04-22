@@ -1,0 +1,20 @@
+{
+  "Metadata": {
+    "description": "Sản phẩm tốt nhất",
+    "title": "Otomata"
+  },
+  "Navbar": {
+    "company": "Công ty",
+    "contact": "Liên hệ",
+    "country": "Việt Nam",
+    "customer": "Khách hàng",
+    "docs": "Tài liệu",
+    "preferences": "Tuỳ chọn",
+    "pricing": "Bảng giá",
+    "products": "Sản phẩm",
+    "resources": "Tài nguyên",
+    "sign-in": "Đăng nhập",
+    "sign-up": "Đăng ký",
+    "solutions": "Giải pháp"
+  }
+}
