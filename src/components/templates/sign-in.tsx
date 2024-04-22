@@ -17,8 +17,25 @@ export default function SignInTemplates() {
     }
   })
 
-  function onSubmit(values: LoginBodyType) {
-    console.log(values)
+  async function onSubmit(values: LoginBodyType) {
+    console.log('values: ', values)
+    // const result = await fetch('/api/auth', {
+    //     method: 'POST',
+    //     body: JSON.stringify(values),
+    //     headers: {
+    //         'Content-Type': "application/json"
+    //     }
+    // }).then(async (res) => {
+    //     const payload = await res.json()
+    //     const data = {
+    //         status: res.status,
+    //         payload
+    //     }
+    //     if (!res.ok) {
+    //         throw data
+    //     }
+    //     return data
+    // })
   }
 
   return (
