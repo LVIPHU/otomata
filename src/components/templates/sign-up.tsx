@@ -7,8 +7,13 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Input } from '@/components/atoms/input'
 import { RegisterBodyType, RegisterBody } from '@/libs/utils'
 import NavigationLink from '@/components/atoms/navigation-link'
+import { createUserWithEmailAndPassword } from '@firebase/auth'
+import { useRouter } from '@/libs/next-intl/navigation'
+import { useFirebaseContext } from '@/provider/firebase-auth'
 
 export default function SignUpTemplates() {
+  const router = useRouter()
+  const { auth } = useFirebaseContext()
   const form = useForm<RegisterBodyType>({
     resolver: zodResolver(RegisterBody),
     defaultValues: {
@@ -18,8 +23,16 @@ export default function SignUpTemplates() {
     }
   })
 
-  function onSubmit(values: RegisterBodyType) {
-    console.log(values)
+  async function onSubmit(values: RegisterBodyType) {
+    try {
+      const { username, password } = values
+      const credential = await createUserWithEmailAndPassword(auth, username, password)
+      if (credential.user) {
+        router.back()
+      }
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   return (
