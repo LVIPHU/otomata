@@ -1,4 +1,5 @@
 import { unstable_setRequestLocale } from 'next-intl/server'
+import MainTemplates from '@/components/templates/main'
 
 type Props = {
   params: { locale: string }
@@ -6,6 +7,9 @@ type Props = {
 
 export default function Home({ params: { locale } }: Props) {
   unstable_setRequestLocale(locale)
-
-  return <main className='flex flex-col items-center justify-between p-24'>MAIN</main>
+  return (
+    <main>
+      <MainTemplates></MainTemplates>
+    </main>
+  )
 }

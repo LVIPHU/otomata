@@ -1,9 +1,16 @@
 import SignUpTemplates from '@/components/templates/sign-up'
+import { unstable_setRequestLocale } from 'next-intl/server'
 
-export default function SignUp() {
+type Props = {
+  params: { locale: string }
+}
+
+export default function SignUp({ params: { locale } }: Props) {
+  unstable_setRequestLocale(locale)
+
   return (
-    <div>
+    <>
       <SignUpTemplates />
-    </div>
+    </>
   )
 }

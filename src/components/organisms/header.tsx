@@ -177,7 +177,7 @@ export default function Header() {
   }
 
   return (
-    <header className={'container-content flex py-4 sticky top-0 bg-background'}>
+    <header className={'container-content flex py-4 sticky top-0 bg-background z-50'}>
       <div className={'flex justify-between items-center w-full'}>
         <NavigationMenu>
           <div className={'mr-8'}>LOGO</div>
