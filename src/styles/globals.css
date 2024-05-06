@@ -62,4 +62,7 @@
   .container-content {
     @apply container mx-auto ps-6 pe-6;
   }
+  .text-color {
+    @apply text-gray-400 dark:text-gray-100;
+  }
 }
