@@ -3,44 +3,14 @@
 import { MacbookScroll } from '@/components/molecules/macbook-scroll'
 import Image from 'next/image'
 import { useRef } from 'react'
-import { useScroll } from 'framer-motion'
 import Autoplay from 'embla-carousel-autoplay'
 
-import { Card, CardContent } from '@/components/atoms/card'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/atoms/card'
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/atoms/carousel'
 import { cn } from '@/libs/utils'
 
 export default function MainTemplates() {
-  const ref = useRef<HTMLDivElement>(null)
-  const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }))
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start start', 'end start']
-  })
-
-  const sectionTwo = (isLid: boolean) => {
-    return (
-      <div ref={ref} className={cn('flex flex-col mb-20', isLid ? 'gap-16' : 'gap-20')}>
-        <h2 className={cn('text-center', isLid ? 'text-3xl font-bold' : 'text-4xl font-extrabold')}>
-          OTOMATA sẽ làm gì cho bạn ?
-        </h2>
-        {data.map(({ image, content }, index) => (
-          <div key={index} className={cn('grid grid-cols-2', isLid ? 'gap-8' : 'gap-10')}>
-            <Image
-              src={image}
-              alt={`image-${index}`}
-              height='500'
-              width='500'
-              className={cn('w-full h-full p-4 object-cover', index % 2 ? 'order-first' : 'order-last')}
-            />
-            <div className={cn('flex flex-col justify-center', index % 2 ? 'order-last' : 'order-first')}>
-              <div className={'text-xl'}>{content}</div>
-            </div>
-          </div>
-        ))}
-      </div>
-    )
-  }
+  const plugin = useRef(Autoplay({ delay: 20000, stopOnInteraction: true }))
 
   return (
     <div>
@@ -61,36 +31,75 @@ export default function MainTemplates() {
           showGradient={false}
         />
       </div>
-      <div className={'container-content'}>{sectionTwo(false)}</div>
-      <div className={'container-content'}>
-        <Carousel
-          plugins={[plugin.current]}
-          className='w-full max-w-xs'
-          onMouseEnter={plugin.current.stop}
-          onMouseLeave={plugin.current.reset}
-        >
-          <CarouselContent>
-            {Array.from({ length: 5 }).map((_, index) => (
-              <CarouselItem key={index}>
-                <div className='p-1'>
-                  <Card>
-                    <CardContent className='flex aspect-square items-center justify-center p-6'>
-                      <span className='text-4xl font-semibold'>{index + 1}</span>
-                    </CardContent>
-                  </Card>
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
-        </Carousel>
+      <div className={'container-content mb-20'}>{sectionTwo(false)}</div>
+      <div className={'container-content mb-20'}>
+        <div className={'flex flex-col gap-5'}>
+          <h2 className={'text-center text-4xl font-extrabold'}>Các sản phẩm đã làm cho khách</h2>
+          <Carousel
+            plugins={[plugin.current]}
+            className='w-full'
+            onMouseEnter={plugin.current.stop}
+            onMouseLeave={plugin.current.reset}
+          >
+            <CarouselContent>
+              {dataSection3.map(({ video, title }, index) => (
+                <CarouselItem key={index}>
+                  <div className='p-1'>
+                    <Card>
+                      <CardHeader>
+                        <CardTitle>{title}</CardTitle>
+                      </CardHeader>
+                      <CardContent className={'relative h-[400px] md:h-[600px] lg:h-[700px]'}>
+                        <iframe
+                          className={'absolute top-0 left-0 w-full h-full'}
+                          width='560'
+                          height='320'
+                          src={video}
+                          title={title}
+                          allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+                          referrerPolicy='strict-origin-when-cross-origin'
+                          allowFullScreen
+                        ></iframe>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+        </div>
       </div>
     </div>
   )
 }
 
-const data = [
+const sectionTwo = (isLid: boolean) => {
+  return (
+    <div className={cn('flex flex-col', isLid ? 'gap-16' : 'gap-20')}>
+      <h2 className={cn('text-center', isLid ? 'text-3xl font-bold' : 'text-4xl font-extrabold')}>
+        OTOMATA sẽ làm gì cho bạn ?
+      </h2>
+      {dataSection2.map(({ image, content }, index) => (
+        <div key={index} className={cn('grid grid-cols-2', isLid ? 'gap-8' : 'gap-10')}>
+          <Image
+            src={image}
+            alt={`image-${index}`}
+            height='500'
+            width='500'
+            className={cn('w-full h-full p-4 object-cover', index % 2 ? 'order-first' : 'order-last')}
+          />
+          <div className={cn('flex flex-col justify-center', index % 2 ? 'order-last' : 'order-first')}>
+            <div className={'text-xl'}>{content}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+const dataSection2 = [
   {
     image: '/images/placeholder-image.svg',
     content: (
@@ -122,5 +131,16 @@ const data = [
         Được hỗ trợ 30% chi phí thiết kế lại tool khi task văn phòng bạn có xảy ra thay đổi
       </p>
     )
+  }
+]
+
+const dataSection3 = [
+  {
+    title: 'OTOMATA task automation',
+    video: 'https://www.youtube.com/embed/JgflLii5MbM?si=QSh7m0kc7Pa45BBD'
+  },
+  {
+    title: 'OTOMATA form filler',
+    video: 'https://www.youtube.com/embed/rEvjrCESMpc?si=r-zT3jQpQuXTTfIF'
   }
 ]
