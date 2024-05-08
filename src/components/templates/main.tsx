@@ -32,8 +32,8 @@ export default function MainTemplates() {
         />
       </div>
       <div className={'container-content mb-20'}>{sectionTwo(false)}</div>
-      <div className={'container-content mb-20'}>
-        <div className={'flex flex-col gap-5'}>
+      <div className={'container-content mb-20 group'}>
+        <div className={'flex flex-col gap-5 px-6'}>
           <h2 className={'text-center text-4xl font-extrabold'}>Các sản phẩm đã làm cho khách</h2>
           <Carousel
             plugins={[plugin.current]}
@@ -66,8 +66,8 @@ export default function MainTemplates() {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
+            <CarouselPrevious className={'hidden group-hover:inline-flex'}/>
+            <CarouselNext className={'hidden group-hover:inline-flex'}/>
           </Carousel>
         </div>
       </div>
@@ -82,15 +82,15 @@ const sectionTwo = (isLid: boolean) => {
         OTOMATA sẽ làm gì cho bạn ?
       </h2>
       {dataSection2.map(({ image, content }, index) => (
-        <div key={index} className={cn('grid grid-cols-2', isLid ? 'gap-8' : 'gap-10')}>
+        <div key={index} className={cn('grid grid-cols-1 md:grid-cols-2', isLid ? 'gap-8' : 'gap-10')}>
           <Image
             src={image}
             alt={`image-${index}`}
             height='500'
             width='500'
-            className={cn('w-full h-full p-4 object-cover', index % 2 ? 'order-first' : 'order-last')}
+            className={cn('w-full h-full p-4 object-cover order-none', index % 2 ? 'md:order-first' : 'md:order-last')}
           />
-          <div className={cn('flex flex-col justify-center', index % 2 ? 'order-last' : 'order-first')}>
+          <div className={cn('flex flex-col justify-center order-none', index % 2 ? 'md:order-last' : 'md:order-first')}>
             <div className={'text-xl'}>{content}</div>
           </div>
         </div>
