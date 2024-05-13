@@ -7,10 +7,28 @@ import Autoplay from 'embla-carousel-autoplay'
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/atoms/card'
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/atoms/carousel'
-import { cn } from '@/libs/utils'
+import { cn, ContactBody, ContactBodyType } from '@/libs/utils'
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/atoms/form'
+import { Input } from '@/components/atoms/input'
+import { Button } from '@/components/atoms/button'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Textarea } from '@/components/atoms/textarea'
 
 export default function MainTemplates() {
   const plugin = useRef(Autoplay({ delay: 20000, stopOnInteraction: true }))
+  const form = useForm<ContactBodyType>({
+    resolver: zodResolver(ContactBody),
+    defaultValues: {
+      fullName: '',
+      company: '',
+      email: '',
+      subject: '',
+      message: ''
+    }
+  })
+
+  async function onSubmit(values: ContactBodyType) {}
 
   return (
     <div>
@@ -31,8 +49,8 @@ export default function MainTemplates() {
           showGradient={false}
         />
       </div>
-      <div className={'container-content mb-20'}>{sectionTwo(false)}</div>
-      <div className={'container-content mb-20 group'}>
+      <div className={'container-content mb-32'}>{sectionTwo(false)}</div>
+      <div className={'container-content mb-32 group'}>
         <div className={'flex flex-col gap-5 px-6'}>
           <h2 className={'text-center text-4xl font-extrabold'}>Các sản phẩm đã làm cho khách</h2>
           <Carousel
@@ -49,7 +67,7 @@ export default function MainTemplates() {
                       <CardHeader>
                         <CardTitle>{title}</CardTitle>
                       </CardHeader>
-                      <CardContent className={'relative h-[400px] md:h-[600px] lg:h-[700px]'}>
+                      <CardContent className={'relative h-[400px] md:h-[600px] lg:h-[680px]'}>
                         <iframe
                           className={'absolute top-0 left-0 w-full h-full'}
                           width='560'
@@ -66,9 +84,96 @@ export default function MainTemplates() {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className={'hidden group-hover:inline-flex'}/>
-            <CarouselNext className={'hidden group-hover:inline-flex'}/>
+            <CarouselPrevious className={'hidden group-hover:inline-flex'} />
+            <CarouselNext className={'hidden group-hover:inline-flex'} />
           </Carousel>
+        </div>
+      </div>
+      <div className={'container-content mb-32 group'}>
+        <div className={'flex flex-col gap-5 px-6'}>
+          <div className={'text-center flex flex-col gap-5 justify-center items-center'}>
+            <h2 className={'text-4xl font-extrabold'}>Ready to talk?</h2>
+            <p className={'text-xl text-color max-w-[800px]'}>
+              Whether you've got an emergency that requires a rapid solution, or just interested in discussing how the
+              platform might stop on in the future, we're here to talk.
+            </p>
+          </div>
+          <div className={'flex justify-center items-center'}>
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-5 max-w-[600px] flex-shrink-0 w-full'>
+                <div className={'grid grid-cols-1 md:grid-cols-2 gap-5'}>
+                  <FormField
+                    control={form.control}
+                    name='fullName'
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Full name</FormLabel>
+                        <FormControl>
+                          <Input placeholder='Your full name' {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name='company'
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Company</FormLabel>
+                        <FormControl>
+                          <Input placeholder='Your company name' {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+                <FormField
+                  control={form.control}
+                  name='email'
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Email</FormLabel>
+                      <FormControl>
+                        <Input placeholder='Your email address' {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name='subject'
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Subject</FormLabel>
+                      <FormControl>
+                        <Input placeholder='Open Source' {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name='message'
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Message</FormLabel>
+                      <FormControl>
+                        <Textarea placeholder='What can we help?' {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <Button type='submit' className={'w-full !mt-10'}>
+                  Submit
+                </Button>
+              </form>
+            </Form>
+          </div>
         </div>
       </div>
     </div>
@@ -90,7 +195,9 @@ const sectionTwo = (isLid: boolean) => {
             width='500'
             className={cn('w-full h-full p-4 object-cover order-none', index % 2 ? 'md:order-first' : 'md:order-last')}
           />
-          <div className={cn('flex flex-col justify-center order-none', index % 2 ? 'md:order-last' : 'md:order-first')}>
+          <div
+            className={cn('flex flex-col justify-center order-none', index % 2 ? 'md:order-last' : 'md:order-first')}
+          >
             <div className={'text-xl'}>{content}</div>
           </div>
         </div>

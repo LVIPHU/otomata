@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl'
 import NavigationLink from '@/components/atoms/navigation-link'
 import { Label } from '@/components/atoms/label'
 import Preferences from '@/components/molecules/preferences'
+import { Facebook, Github, Linkedin, Youtube } from 'lucide-react'
 
 export default function Footer() {
   const t = useTranslations('Navbar')
@@ -50,7 +51,12 @@ export default function Footer() {
       <nav className={'container-content py-12 grid grid-cols-5 gap-6'}>
         <div className={'flex flex-col pt-2 gap-2'}>
           <div>LOGO</div>
-          <div>social contact</div>
+          <div className={'flex gap-3 items-center'}>
+            <Facebook className={'h-5 w-5'} />
+            <Youtube className={'h-5 w-5'} />
+            <Github className={'h-5 w-5'} />
+            <Linkedin className={'h-5 w-5'} />
+          </div>
         </div>
         {renderMenu(menuItems)}
         <Preferences />
