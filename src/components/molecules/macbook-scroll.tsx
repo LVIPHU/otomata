@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useMemo, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { MotionValue, motion, useScroll, useTransform } from 'framer-motion'
 import { cn } from '@/libs/utils'
 import {
@@ -60,7 +60,7 @@ export const MacbookScroll = ({
   return (
     <div
       ref={ref}
-      className='flex flex-col items-center mt-0 mb-0 md:mb-80 md:mt-40 justify-start flex-shrink-0 [perspective:800px] transform md:scale-100  scale-[0.35] sm:scale-50'
+      className='flex flex-col items-center mt-0 mb-0 md:mb-80 md:mt-40 justify-start flex-shrink-0 [perspective:800px] transform scale-[0.75] sm:scale-75 md:scale-100'
     >
       <motion.h2
         style={{

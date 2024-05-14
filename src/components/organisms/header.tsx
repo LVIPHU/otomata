@@ -1,5 +1,7 @@
+'use client'
 import { useTranslations } from 'next-intl'
 import NavigationLink from '@/components/atoms/navigation-link'
+import { motion, useScroll, useMotionValueEvent } from 'framer-motion'
 import { Button } from '@/components/atoms/button'
 import { MenuItem, MenuItemChildren } from '@/types/app'
 import {
@@ -11,10 +13,20 @@ import {
   NavigationMenuTrigger
 } from '@/components/atoms/navigation-menu'
 import { cn } from '@/libs/utils'
+import { useState } from 'react'
 
 export default function Header() {
   const t = useTranslations('Navbar')
-
+  const { scrollY } = useScroll()
+  const [hidden, setHidden] = useState(false)
+  useMotionValueEvent(scrollY, 'change', (latestValue) => {
+    const previousValue = scrollY.getPrevious()
+    if (previousValue && latestValue > previousValue && latestValue > 150) {
+      setHidden(true)
+    } else {
+      setHidden(false)
+    }
+  })
   const menuItems: MenuItem[] = [
     {
       content: t('products'),
@@ -177,7 +189,12 @@ export default function Header() {
   }
 
   return (
-    <header className={'container-content flex py-4 sticky top-0 bg-background z-50'}>
+    <motion.nav
+      variants={{ visible: { y: 0 }, hidden: { y: '-100%' } }}
+      transition={{ duration: 0.35, ease: 'easeInOut' }}
+      animate={hidden ? 'hidden' : ' visible'}
+      className={'container-content flex py-4 sticky top-0 bg-background z-50'}
+    >
       <div className={'flex justify-between items-center w-full'}>
         <NavigationMenu>
           <div className={'mr-8'}>LOGO</div>
@@ -191,6 +208,6 @@ export default function Header() {
           ))}
         </div>
       </div>
-    </header>
+    </motion.nav>
   )
 }

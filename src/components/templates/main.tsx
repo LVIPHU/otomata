@@ -49,8 +49,8 @@ export default function MainTemplates() {
           showGradient={false}
         />
       </div>
-      <div className={'container-content mb-32'}>{sectionTwo(false)}</div>
-      <div className={'container-content mb-32 group'}>
+      <div className={'container-content mb-32 md:mb-52'}>{sectionTwo(false)}</div>
+      <div className={'container-content group min-h-[100vh]'}>
         <div className={'flex flex-col gap-5 px-6'}>
           <h2 className={'text-center text-4xl font-extrabold'}>Các sản phẩm đã làm cho khách</h2>
           <Carousel
@@ -67,7 +67,7 @@ export default function MainTemplates() {
                       <CardHeader>
                         <CardTitle>{title}</CardTitle>
                       </CardHeader>
-                      <CardContent className={'relative h-[400px] md:h-[600px] lg:h-[680px]'}>
+                      <CardContent className={'relative h-[70vh]'}>
                         <iframe
                           className={'absolute top-0 left-0 w-full h-full'}
                           width='560'
@@ -89,7 +89,7 @@ export default function MainTemplates() {
           </Carousel>
         </div>
       </div>
-      <div className={'container-content mb-32 group'}>
+      <div className={'container-content group min-h-[100vh] flex justify-center items-center'}>
         <div className={'flex flex-col gap-5 px-6'}>
           <div className={'text-center flex flex-col gap-5 justify-center items-center'}>
             <h2 className={'text-4xl font-extrabold'}>Ready to talk?</h2>
