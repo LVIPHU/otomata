@@ -3,7 +3,7 @@ import { useTranslations } from 'next-intl'
 import NavigationLink from '@/components/atoms/navigation-link'
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion'
 import { Button } from '@/components/atoms/button'
-import { MenuItem, MenuItemChildren } from '@/types/app'
+import { MenuItem } from '@/types/app'
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -14,6 +14,10 @@ import {
 } from '@/components/atoms/navigation-menu'
 import { cn } from '@/libs/utils'
 import { useState } from 'react'
+import { AlignRight } from 'lucide-react'
+import { Sheet, SheetContent, SheetTrigger } from '@/components/atoms/sheet'
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/atoms/collapsible'
+import { ScrollArea } from '@/components/atoms/scroll-area'
 
 export default function Header() {
   const t = useTranslations('Navbar')
@@ -144,32 +148,24 @@ export default function Header() {
   ]
 
   const headerRightItems: MenuItem[] = [
-    { content: <Button variant={'ghost'}>{t('contact')}</Button>, href: '/' },
-    { content: <Button variant={'outline'}>{t('sign-in')}</Button>, href: '/sign-in' },
-    { content: <Button>{t('sign-up')}</Button>, href: '/sign-up' }
+    {
+      content: (
+        <Button className={'w-full lg:w-auto'} variant={'ghost'}>
+          {t('contact')}
+        </Button>
+      ),
+      href: '/'
+    },
+    {
+      content: (
+        <Button className={'w-full lg:w-auto'} variant={'outline'}>
+          {t('sign-in')}
+        </Button>
+      ),
+      href: '/sign-in'
+    },
+    { content: <Button className={'w-full lg:w-auto'}>{t('sign-up')}</Button>, href: '/sign-up' }
   ]
-
-  const ListItem = (items: MenuItemChildren[] | undefined) => {
-    return (
-      <ul className='grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]'>
-        {items &&
-          items.map((item, index) => (
-            <li key={index}>
-              <NavigationMenuLink href={item.href ?? '/'}>
-                <div
-                  className={cn(
-                    'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground'
-                  )}
-                >
-                  <div className='text-sm font-medium leading-none'>{item.title}</div>
-                  <p className='line-clamp-2 text-sm leading-snug text-muted-foreground'>{item.description}</p>
-                </div>
-              </NavigationMenuLink>
-            </li>
-          ))}
-      </ul>
-    )
-  }
 
   const renderMenu = (items: MenuItem[]) => {
     return items.map(({ href, content, children }, index) => (
@@ -181,33 +177,99 @@ export default function Header() {
         ) : (
           <>
             <NavigationMenuTrigger>{content}</NavigationMenuTrigger>
-            <NavigationMenuContent>{ListItem(children)}</NavigationMenuContent>
+            <NavigationMenuContent>
+              <ul className='grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]'>
+                {children &&
+                  children.map((item, index) => (
+                    <li key={index}>
+                      <NavigationMenuLink href={item.href ?? '/'}>
+                        <div
+                          className={cn(
+                            'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground'
+                          )}
+                        >
+                          <div className='text-sm font-medium leading-none'>{item.title}</div>
+                          <p className='line-clamp-2 text-sm leading-snug text-muted-foreground'>{item.description}</p>
+                        </div>
+                      </NavigationMenuLink>
+                    </li>
+                  ))}
+              </ul>
+            </NavigationMenuContent>
           </>
         )}
       </NavigationMenuItem>
     ))
   }
 
+  const renderMobileMenu = (items: MenuItem[]) => {
+    return items.map(({ href, content, children }, index) => (
+      <Collapsible key={index}>
+        {href ? (
+          <NavigationLink href={href}>
+            <span className={'text-sm font-medium leading-none'}>{content}</span>
+          </NavigationLink>
+        ) : (
+          <>
+            <CollapsibleTrigger>{content}</CollapsibleTrigger>
+            <CollapsibleContent>
+              <ul className='grid gap-3 p-4'>
+                {children &&
+                  children.map((item, index) => (
+                    <li key={index}>
+                      <NavigationLink href={item.href ?? '/'}>
+                        <span className='text-sm font-medium leading-none'>{item.title}</span>
+                      </NavigationLink>
+                    </li>
+                  ))}
+              </ul>
+            </CollapsibleContent>
+          </>
+        )}
+      </Collapsible>
+    ))
+  }
+
   return (
-    <motion.nav
+    <motion.header
       variants={{ visible: { y: 0 }, hidden: { y: '-100%' } }}
       transition={{ duration: 0.35, ease: 'easeInOut' }}
       animate={hidden ? 'hidden' : ' visible'}
       className={'container-content flex py-4 sticky top-0 bg-background z-50'}
     >
-      <div className={'flex justify-between items-center w-full'}>
-        <NavigationMenu>
-          <div className={'mr-8'}>LOGO</div>
-          <NavigationMenuList>{renderMenu(menuItems)}</NavigationMenuList>
-        </NavigationMenu>
-        <div className={'flex gap-3'}>
-          {headerRightItems.map(({ href, content }, index) => (
-            <NavigationLink key={index} href={href || '/'} passHref>
-              {content}
-            </NavigationLink>
-          ))}
+      <Sheet>
+        <div className={'flex justify-between items-center w-full'}>
+          <div className={'mr-8 block lg:hidden'}>LOGO</div>
+          <SheetTrigger>
+            <Button className={'inline-flex lg:hidden rounded-full'} variant={'ghost'} size={'icon'}>
+              <AlignRight />
+            </Button>
+          </SheetTrigger>
+          <NavigationMenu className={'hidden lg:flex'}>
+            <div className={'mr-8'}>LOGO</div>
+            <NavigationMenuList>{renderMenu(menuItems)}</NavigationMenuList>
+          </NavigationMenu>
+          <div className={'hidden lg:flex gap-3'}>
+            {headerRightItems.map(({ href, content }, index) => (
+              <NavigationLink key={index} href={href || '/'} passHref>
+                {content}
+              </NavigationLink>
+            ))}
+          </div>
         </div>
-      </div>
-    </motion.nav>
+        <SheetContent side={'right'}>
+          <div className={'grid grid-cols-1 gap-5 mt-7'}>
+            {headerRightItems
+              .filter((item) => item.href !== '/')
+              .map(({ href, content }, index) => (
+                <NavigationLink key={index} href={href || '/'} passHref>
+                  {content}
+                </NavigationLink>
+              ))}
+            <ScrollArea className={'h-[75vh]'}>{renderMobileMenu(menuItems)}</ScrollArea>
+          </div>
+        </SheetContent>
+      </Sheet>
+    </motion.header>
   )
 }
