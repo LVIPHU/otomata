@@ -6,7 +6,7 @@ import useMediaQuery from '@/hooks/use-media-query'
 import { Drawer, DrawerContent } from '@/components/atoms/drawer'
 
 export default function SignIn() {
-  const isDesktop = useMediaQuery('(min-width: 768px)')
+  const isDesktop = useMediaQuery('(min-width: 1024px)')
   const router = useRouter()
   function onDismiss(open: boolean) {
     if (!open) {

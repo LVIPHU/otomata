@@ -16,12 +16,14 @@ import { cn } from '@/libs/utils'
 import { useState } from 'react'
 import { AlignRight } from 'lucide-react'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/atoms/sheet'
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/atoms/collapsible'
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/atoms/accordion'
 import { ScrollArea } from '@/components/atoms/scroll-area'
+import useMediaQuery from '@/hooks/use-media-query'
 
 export default function Header() {
   const t = useTranslations('Navbar')
   const { scrollY } = useScroll()
+  const isDesktop = useMediaQuery('(min-width: 1024px)')
   const [hidden, setHidden] = useState(false)
   useMotionValueEvent(scrollY, 'change', (latestValue) => {
     const previousValue = scrollY.getPrevious()
@@ -204,15 +206,19 @@ export default function Header() {
 
   const renderMobileMenu = (items: MenuItem[]) => {
     return items.map(({ href, content, children }, index) => (
-      <Collapsible key={index}>
+      <AccordionItem value={`item-${index}`} key={index}>
         {href ? (
-          <NavigationLink href={href}>
-            <span className={'text-sm font-medium leading-none'}>{content}</span>
-          </NavigationLink>
+          <div className={'flex items-center py-4 font-medium'}>
+            <NavigationLink href={href}>
+              <span className={'text-sm font-medium leading-none'}>{content}</span>
+            </NavigationLink>
+          </div>
         ) : (
           <>
-            <CollapsibleTrigger>{content}</CollapsibleTrigger>
-            <CollapsibleContent>
+            <AccordionTrigger>
+              <span>{content}</span>
+            </AccordionTrigger>
+            <AccordionContent>
               <ul className='grid gap-3 p-4'>
                 {children &&
                   children.map((item, index) => (
@@ -223,10 +229,10 @@ export default function Header() {
                     </li>
                   ))}
               </ul>
-            </CollapsibleContent>
+            </AccordionContent>
           </>
         )}
-      </Collapsible>
+      </AccordionItem>
     ))
   }
 
@@ -239,23 +245,28 @@ export default function Header() {
     >
       <Sheet>
         <div className={'flex justify-between items-center w-full'}>
-          <div className={'mr-8 block lg:hidden'}>LOGO</div>
-          <SheetTrigger>
-            <Button className={'inline-flex lg:hidden rounded-full'} variant={'ghost'} size={'icon'}>
-              <AlignRight />
-            </Button>
-          </SheetTrigger>
-          <NavigationMenu className={'hidden lg:flex'}>
-            <div className={'mr-8'}>LOGO</div>
-            <NavigationMenuList>{renderMenu(menuItems)}</NavigationMenuList>
-          </NavigationMenu>
-          <div className={'hidden lg:flex gap-3'}>
-            {headerRightItems.map(({ href, content }, index) => (
-              <NavigationLink key={index} href={href || '/'} passHref>
-                {content}
-              </NavigationLink>
-            ))}
-          </div>
+          {isDesktop ? (
+            <>
+              <NavigationMenu className={'flex'}>
+                <div className={'mr-8'}>LOGO</div>
+                <NavigationMenuList>{renderMenu(menuItems)}</NavigationMenuList>
+              </NavigationMenu>
+              <div className={'flex gap-3'}>
+                {headerRightItems.map(({ href, content }, index) => (
+                  <NavigationLink key={index} href={href || '/'} passHref>
+                    {content}
+                  </NavigationLink>
+                ))}
+              </div>
+            </>
+          ) : (
+            <>
+              <div className={'mr-8 block lg:hidden'}>LOGO</div>
+              <SheetTrigger>
+                <AlignRight className={'inline-flex lg:hidden'} />
+              </SheetTrigger>
+            </>
+          )}
         </div>
         <SheetContent side={'right'}>
           <div className={'grid grid-cols-1 gap-5 mt-7'}>
@@ -266,7 +277,11 @@ export default function Header() {
                   {content}
                 </NavigationLink>
               ))}
-            <ScrollArea className={'h-[75vh]'}>{renderMobileMenu(menuItems)}</ScrollArea>
+            <ScrollArea className={'h-[75vh]'}>
+              <Accordion type='single' collapsible className='w-full'>
+                {renderMobileMenu(menuItems)}
+              </Accordion>
+            </ScrollArea>
           </div>
         </SheetContent>
       </Sheet>
