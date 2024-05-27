@@ -14,6 +14,7 @@ import { Button } from '@/components/atoms/button'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Textarea } from '@/components/atoms/textarea'
+import Reveal from '@/components/molecules/reveal'
 
 export default function MainTemplates() {
   const plugin = useRef(Autoplay({ delay: 20000, stopOnInteraction: true }))
@@ -36,13 +37,17 @@ export default function MainTemplates() {
         <MacbookScroll
           title={
             <div className={'max-w-[800px] flex flex-col gap-5 text-center'}>
-              <h1 className={'text-5xl font-extrabold'}>
-                Đêm OT ta đi ăn 🍜 <br /> Task gì việc gì tool này lo hết
-              </h1>
-              <p className={'text-xl text-color'}>
-                OTOMATA là dự án freelance được ra đời để giúp 💪 các anh chị em văn phòng tự động hoá những công việc
-                văn phòng trong công ty, chỉ với vài ngày lương và vài cú click.
-              </p>
+              <Reveal>
+                <h1 className={'text-5xl font-extrabold'}>
+                  Đêm OT ta đi ăn 🍜 <br /> Task gì việc gì tool này lo hết
+                </h1>
+              </Reveal>
+              <Reveal>
+                <p className={'text-xl text-color'}>
+                  OTOMATA là dự án freelance được ra đời để giúp 💪 các anh chị em văn phòng tự động hoá những công việc
+                  văn phòng trong công ty, chỉ với vài ngày lương và vài cú click.
+                </p>
+              </Reveal>
             </div>
           }
           content={<div className={'container-content'}>{sectionTwo(true)}</div>}
@@ -52,7 +57,9 @@ export default function MainTemplates() {
       <div className={'container-content mb-32 md:mb-52'}>{sectionTwo(false)}</div>
       <div className={'container-content group min-h-[100vh]'}>
         <div className={'flex flex-col gap-5 px-6'}>
-          <h2 className={'text-center text-4xl font-extrabold'}>Các sản phẩm đã làm cho khách</h2>
+          <Reveal>
+            <h2 className={'text-center text-4xl font-extrabold'}>Các sản phẩm đã làm cho khách</h2>
+          </Reveal>
           <Carousel
             plugins={[plugin.current]}
             className='w-full'
@@ -92,11 +99,15 @@ export default function MainTemplates() {
       <div className={'container-content group min-h-[100vh] flex justify-center items-center'}>
         <div className={'flex flex-col gap-5 px-6'}>
           <div className={'text-center flex flex-col gap-5 justify-center items-center'}>
-            <h2 className={'text-4xl font-extrabold'}>Ready to talk?</h2>
-            <p className={'text-xl text-color max-w-[800px]'}>
-              Whether you've got an emergency that requires a rapid solution, or just interested in discussing how the
-              platform might stop on in the future, we're here to talk.
-            </p>
+            <Reveal>
+              <h2 className={'text-4xl font-extrabold'}>Ready to talk?</h2>
+            </Reveal>
+            <Reveal>
+              <p className={'text-xl text-color max-w-[800px]'}>
+                Whether you've got an emergency that requires a rapid solution, or just interested in discussing how the
+                platform might stop on in the future, we're here to talk.
+              </p>
+            </Reveal>
           </div>
           <div className={'flex justify-center items-center'}>
             <Form {...form}>
@@ -183,9 +194,11 @@ export default function MainTemplates() {
 const sectionTwo = (isLid: boolean) => {
   return (
     <div className={cn('flex flex-col', isLid ? 'gap-16' : 'gap-20')}>
-      <h2 className={cn('text-center', isLid ? 'text-3xl font-bold' : 'text-4xl font-extrabold')}>
-        OTOMATA sẽ làm gì cho bạn ?
-      </h2>
+      <Reveal>
+        <h2 className={cn('text-center', isLid ? 'text-3xl font-bold' : 'text-4xl font-extrabold')}>
+          OTOMATA sẽ làm gì cho bạn ?
+        </h2>
+      </Reveal>
       {dataSection2.map(({ image, content }, index) => (
         <div key={index} className={cn('grid grid-cols-1 md:grid-cols-2', isLid ? 'gap-8' : 'gap-10')}>
           <Image
@@ -198,7 +211,9 @@ const sectionTwo = (isLid: boolean) => {
           <div
             className={cn('flex flex-col justify-center order-none', index % 2 ? 'md:order-last' : 'md:order-first')}
           >
-            <div className={'text-xl'}>{content}</div>
+            <Reveal>
+              <div className={'text-xl'}>{content}</div>
+            </Reveal>
           </div>
         </div>
       ))}
