@@ -1,7 +1,7 @@
 import { motion, useAnimation, useInView } from 'framer-motion'
-import { useEffect, useRef } from 'react'
+import { ReactNode, useEffect, useRef } from 'react'
 interface Props {
-  children: JSX.Element
+  children: ReactNode
   width?: 'fit-content' | '100%'
 }
 
