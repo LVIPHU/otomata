@@ -60,40 +60,42 @@ export default function MainTemplates() {
           <Reveal variant={'top'}>
             <h2 className={'text-center text-4xl font-extrabold'}>Các sản phẩm đã làm cho khách</h2>
           </Reveal>
-          <Carousel
-            plugins={[plugin.current]}
-            className='w-full'
-            onMouseEnter={plugin.current.stop}
-            onMouseLeave={plugin.current.reset}
-          >
-            <CarouselContent>
-              {dataSection3.map(({ video, title }, index) => (
-                <CarouselItem key={index}>
-                  <div className='p-1'>
-                    <Card>
-                      <CardHeader>
-                        <CardTitle>{title}</CardTitle>
-                      </CardHeader>
-                      <CardContent className={'relative h-[70vh]'}>
-                        <iframe
-                          className={'absolute top-0 left-0 w-full h-full'}
-                          width='560'
-                          height='320'
-                          src={video}
-                          title={title}
-                          allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-                          referrerPolicy='strict-origin-when-cross-origin'
-                          allowFullScreen
-                        ></iframe>
-                      </CardContent>
-                    </Card>
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className={'hidden group-hover:inline-flex'} />
-            <CarouselNext className={'hidden group-hover:inline-flex'} />
-          </Carousel>
+          <Reveal variant={'bottom'}>
+            <Carousel
+              plugins={[plugin.current]}
+              className='w-full'
+              onMouseEnter={plugin.current.stop}
+              onMouseLeave={plugin.current.reset}
+            >
+              <CarouselContent>
+                {dataSection3.map(({ video, title }, index) => (
+                  <CarouselItem key={index}>
+                    <div className='p-1'>
+                      <Card>
+                        <CardHeader>
+                          <CardTitle>{title}</CardTitle>
+                        </CardHeader>
+                        <CardContent className={'relative h-[70vh]'}>
+                          <iframe
+                            className={'absolute top-0 left-0 w-full h-full'}
+                            width='560'
+                            height='320'
+                            src={video}
+                            title={title}
+                            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+                            referrerPolicy='strict-origin-when-cross-origin'
+                            allowFullScreen
+                          ></iframe>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className={'hidden group-hover:inline-flex'} />
+              <CarouselNext className={'hidden group-hover:inline-flex'} />
+            </Carousel>
+          </Reveal>
         </div>
       </div>
       <div className={'container-content group min-h-[100vh] flex justify-center items-center'}>
@@ -104,8 +106,8 @@ export default function MainTemplates() {
             </Reveal>
             <Reveal variant={'right'}>
               <p className={'text-xl text-color max-w-[800px]'}>
-                Whether you've got an emergency that requires a rapid solution, or just interested in discussing how the
-                platform might stop on in the future, we're here to talk.
+                  Whether you&apos;ve got an emergency that requires a rapid solution, or just interested in discussing how the
+                  platform might stop on in the future, we&apos;re here to talk.
               </p>
             </Reveal>
           </div>
@@ -203,13 +205,18 @@ const sectionTwo = (isLid: boolean) => {
       </Reveal>
       {dataSection2.map(({ image, content }, index) => (
         <div key={index} className={cn('grid grid-cols-1 md:grid-cols-2', isLid ? 'gap-8' : 'gap-10')}>
-          <Image
-            src={image}
-            alt={`image-${index}`}
-            height='500'
-            width='500'
-            className={cn('w-full h-full p-4 object-cover order-none', index % 2 ? 'md:order-first' : 'md:order-last')}
-          />
+          <Reveal variant={'bottom'}>
+            <Image
+              src={image}
+              alt={`image-${index}`}
+              height='500'
+              width='500'
+              className={cn(
+                'w-full h-full p-4 object-cover order-none',
+                index % 2 ? 'md:order-first' : 'md:order-last'
+              )}
+            />
+          </Reveal>
           <div
             className={cn('flex flex-col justify-center order-none', index % 2 ? 'md:order-last' : 'md:order-first')}
           >

@@ -241,7 +241,7 @@ export default function Header() {
       variants={{ visible: { y: 0 }, hidden: { y: '-100%' } }}
       transition={{ duration: 0.35, ease: 'easeInOut' }}
       animate={hidden ? 'hidden' : ' visible'}
-      className={'container-content flex py-4 sticky top-0 bg-background z-50'}
+      className={'container-content flex py-4 sticky top-0 bg-background z-10'}
     >
       <Sheet>
         <div className={'flex justify-between items-center w-full'}>
