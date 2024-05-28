@@ -37,12 +37,12 @@ export default function MainTemplates() {
         <MacbookScroll
           title={
             <div className={'max-w-[800px] flex flex-col gap-5 text-center'}>
-              <Reveal>
+              <Reveal variant={'right'}>
                 <h1 className={'text-5xl font-extrabold'}>
                   Đêm OT ta đi ăn 🍜 <br /> Task gì việc gì tool này lo hết
                 </h1>
               </Reveal>
-              <Reveal>
+              <Reveal variant={'left'}>
                 <p className={'text-xl text-color'}>
                   OTOMATA là dự án freelance được ra đời để giúp 💪 các anh chị em văn phòng tự động hoá những công việc
                   văn phòng trong công ty, chỉ với vài ngày lương và vài cú click.
@@ -57,7 +57,7 @@ export default function MainTemplates() {
       <div className={'container-content mb-32 md:mb-52'}>{sectionTwo(false)}</div>
       <div className={'container-content group min-h-[100vh]'}>
         <div className={'flex flex-col gap-5 px-6'}>
-          <Reveal>
+          <Reveal variant={'top'}>
             <h2 className={'text-center text-4xl font-extrabold'}>Các sản phẩm đã làm cho khách</h2>
           </Reveal>
           <Carousel
@@ -99,28 +99,56 @@ export default function MainTemplates() {
       <div className={'container-content group min-h-[100vh] flex justify-center items-center'}>
         <div className={'flex flex-col gap-5 px-6'}>
           <div className={'text-center flex flex-col gap-5 justify-center items-center'}>
-            <Reveal>
+            <Reveal variant={'left'}>
               <h2 className={'text-4xl font-extrabold'}>Ready to talk?</h2>
             </Reveal>
-            <Reveal>
+            <Reveal variant={'right'}>
               <p className={'text-xl text-color max-w-[800px]'}>
                 Whether you've got an emergency that requires a rapid solution, or just interested in discussing how the
                 platform might stop on in the future, we're here to talk.
               </p>
             </Reveal>
           </div>
-          <div className={'flex justify-center items-center'}>
-            <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-5 max-w-[600px] flex-shrink-0 w-full'>
-                <div className={'grid grid-cols-1 md:grid-cols-2 gap-5'}>
+          <Reveal variant={'bottom'}>
+            <div className={'flex justify-center items-center'}>
+              <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-5 max-w-[600px] flex-shrink-0 w-full'>
+                  <div className={'grid grid-cols-1 md:grid-cols-2 gap-5'}>
+                    <FormField
+                      control={form.control}
+                      name='fullName'
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Full name</FormLabel>
+                          <FormControl>
+                            <Input placeholder='Your full name' {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name='company'
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Company</FormLabel>
+                          <FormControl>
+                            <Input placeholder='Your company name' {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
                   <FormField
                     control={form.control}
-                    name='fullName'
+                    name='email'
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Full name</FormLabel>
+                        <FormLabel>Email</FormLabel>
                         <FormControl>
-                          <Input placeholder='Your full name' {...field} />
+                          <Input placeholder='Your email address' {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -128,63 +156,37 @@ export default function MainTemplates() {
                   />
                   <FormField
                     control={form.control}
-                    name='company'
+                    name='subject'
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Company</FormLabel>
+                        <FormLabel>Subject</FormLabel>
                         <FormControl>
-                          <Input placeholder='Your company name' {...field} />
+                          <Input placeholder='Open Source' {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
-                </div>
-                <FormField
-                  control={form.control}
-                  name='email'
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Email</FormLabel>
-                      <FormControl>
-                        <Input placeholder='Your email address' {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name='subject'
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Subject</FormLabel>
-                      <FormControl>
-                        <Input placeholder='Open Source' {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name='message'
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Message</FormLabel>
-                      <FormControl>
-                        <Textarea placeholder='What can we help?' {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <Button type='submit' className={'w-full !mt-10'}>
-                  Submit
-                </Button>
-              </form>
-            </Form>
-          </div>
+                  <FormField
+                    control={form.control}
+                    name='message'
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Message</FormLabel>
+                        <FormControl>
+                          <Textarea placeholder='What can we help?' {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <Button type='submit' className={'w-full !mt-10'}>
+                    Submit
+                  </Button>
+                </form>
+              </Form>
+            </div>
+          </Reveal>
         </div>
       </div>
     </div>
@@ -194,7 +196,7 @@ export default function MainTemplates() {
 const sectionTwo = (isLid: boolean) => {
   return (
     <div className={cn('flex flex-col', isLid ? 'gap-16' : 'gap-20')}>
-      <Reveal>
+      <Reveal variant={'left'}>
         <h2 className={cn('text-center', isLid ? 'text-3xl font-bold' : 'text-4xl font-extrabold')}>
           OTOMATA sẽ làm gì cho bạn ?
         </h2>
@@ -211,7 +213,7 @@ const sectionTwo = (isLid: boolean) => {
           <div
             className={cn('flex flex-col justify-center order-none', index % 2 ? 'md:order-last' : 'md:order-first')}
           >
-            <Reveal>
+            <Reveal variant={index % 2 ? 'right' : 'left'}>
               <div className={'text-xl'}>{content}</div>
             </Reveal>
           </div>

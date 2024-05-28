@@ -1,11 +1,12 @@
-import { motion, useAnimation, useInView } from 'framer-motion'
+import { motion, useAnimation, useInView, Variants } from 'framer-motion'
 import { ReactNode, useEffect, useRef } from 'react'
 interface Props {
   children: ReactNode
   width?: 'fit-content' | '100%'
+  variant?: 'left' | 'right' | 'top' | 'bottom'
 }
 
-export default function Reveal({ children, width = '100%' }: Props) {
+export default function Reveal({ children, width = '100%', variant = 'bottom' }: Props) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true })
   const mainControls = useAnimation()
@@ -15,17 +16,30 @@ export default function Reveal({ children, width = '100%' }: Props) {
       mainControls.start('visible')
       // slideControls.start('visible')
     }
-  }, [isInView])
+  }, [isInView, mainControls])
+
+  const renderVariants = (): Variants => {
+    switch (variant) {
+      case 'left':
+        return { hidden: { opacity: 0, x: -75 }, visible: { opacity: 1, x: 0 } }
+      case 'right':
+        return { hidden: { opacity: 0, x: 75 }, visible: { opacity: 1, x: 0 } }
+      case 'top':
+        return { hidden: { opacity: 0, y: -75 }, visible: { opacity: 1, y: 0 } }
+      case 'bottom':
+        return { hidden: { opacity: 0, y: 75 }, visible: { opacity: 1, y: 0 } }
+      default:
+        return { hidden: { opacity: 0, y: 75 }, visible: { opacity: 1, y: 0 } }
+    }
+  }
+
   return (
     <div ref={ref} className={'relative overflow-hidden'} style={{ width }}>
       <motion.div
-        variants={{
-          hidden: { opacity: 0, y: 75 },
-          visible: { opacity: 1, y: 0 }
-        }}
+        variants={renderVariants()}
         initial={'hidden'}
         animate={mainControls}
-        transition={{ duration: 0.5, delay: 0.25 }}
+        transition={{ duration: 0.5, delay: 0.5 }}
       >
         {children}
       </motion.div>
