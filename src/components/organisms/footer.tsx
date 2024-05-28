@@ -85,12 +85,12 @@ export default function Footer() {
 
   return (
     <footer className={'border-t border-input'}>
-      <nav className={'container-content py-8 md:py-12 lg:grid grid-cols-5 gap-6'}>
+      <nav className={'container-content py-8 md:py-12 flex flex-col lg:flex-row lg:gap-6 w-full'}>
         <div className={'flex flex-col pt-2 gap-2 mb-4 lg:mb-0'}>
           <div>LOGO</div>
           <div className={'hidden lg:block'}>{social}</div>
         </div>
-        <div className={'hidden lg:block'}>{renderMenu(menuItems)}</div>
+        <div className={'hidden lg:grow lg:grid lg:grid-cols-3 gap-6'}>{renderMenu(menuItems)}</div>
         <div className={'block lg:hidden'}>{renderMobileMenu(menuItems)}</div>
         <Preferences social={social} />
       </nav>
