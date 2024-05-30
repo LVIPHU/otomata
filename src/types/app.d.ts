@@ -11,5 +11,6 @@ export type MenuItemChildren = {
 export type MenuItem = {
   content: string | ReactElement
   href?: AppPathnames
+  id?: string
   children?: MenuItemChildren[]
 }

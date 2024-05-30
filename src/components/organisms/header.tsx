@@ -35,129 +35,28 @@ export default function Header() {
   })
   const menuItems: MenuItem[] = [
     {
-      content: t('products'),
-      children: [
-        {
-          title: 'Alert Dialog',
-          href: '/',
-          description: 'A modal dialog that interrupts the user with important content and expects a response.'
-        },
-        {
-          title: 'Hover Card',
-          href: '/',
-          description: 'For sighted users to preview content available behind a link.'
-        },
-        {
-          title: 'Progress',
-          href: '/',
-          description:
-            'Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.'
-        },
-        {
-          title: 'Scroll-area',
-          href: '/',
-          description: 'Visually or semantically separates content.'
-        },
-        {
-          title: 'Tabs',
-          href: '/',
-          description: 'A set of layered sections of content—known as tab panels—that are displayed one at a time.'
-        },
-        {
-          title: 'Tooltip',
-          href: '/',
-          description:
-            'A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.'
-        }
-      ]
+      id: '#solution',
+      content: t('solutions')
     },
     {
-      content: t('solutions'),
-      children: [
-        {
-          title: 'Alert Dialog',
-          href: '/',
-          description: 'A modal dialog that interrupts the user with important content and expects a response.'
-        },
-        {
-          title: 'Hover Card',
-          href: '/',
-          description: 'For sighted users to preview content available behind a link.'
-        },
-        {
-          title: 'Progress',
-          href: '/',
-          description:
-            'Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.'
-        },
-        {
-          title: 'Scroll-area',
-          href: '/',
-          description: 'Visually or semantically separates content.'
-        },
-        {
-          title: 'Tabs',
-          href: '/',
-          description: 'A set of layered sections of content—known as tab panels—that are displayed one at a time.'
-        },
-        {
-          title: 'Tooltip',
-          href: '/',
-          description:
-            'A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.'
-        }
-      ]
+      id: '#product',
+      content: t('products')
     },
     {
-      content: t('resources'),
-      children: [
-        {
-          title: 'Alert Dialog',
-          href: '/',
-          description: 'A modal dialog that interrupts the user with important content and expects a response.'
-        },
-        {
-          title: 'Hover Card',
-          href: '/',
-          description: 'For sighted users to preview content available behind a link.'
-        },
-        {
-          title: 'Progress',
-          href: '/',
-          description:
-            'Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.'
-        },
-        {
-          title: 'Scroll-area',
-          href: '/',
-          description: 'Visually or semantically separates content.'
-        },
-        {
-          title: 'Tabs',
-          href: '/',
-          description: 'A set of layered sections of content—known as tab panels—that are displayed one at a time.'
-        },
-        {
-          title: 'Tooltip',
-          href: '/',
-          description:
-            'A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.'
-        }
-      ]
-    },
-    { content: t('docs'), href: '/' },
-    { content: t('pricing'), href: '/' }
+      id: '#pricing',
+      content: t('pricing')
+    }
   ]
 
   const headerRightItems: MenuItem[] = [
-    {
-      content: (
-        <Button className={'w-full lg:w-auto'} variant={'ghost'}>
-          {t('contact')}
-        </Button>
-      ),
-      href: '/'
-    },
+    // {
+    //   content: (
+    //     <Button className={'w-full lg:w-auto'} variant={'ghost'}>
+    //       {t('contact')}
+    //     </Button>
+    //   ),
+    //   href: '/'
+    // },
     {
       content: (
         <Button className={'w-full lg:w-auto'} variant={'outline'}>
@@ -170,12 +69,12 @@ export default function Header() {
   ]
 
   const renderMenu = (items: MenuItem[]) => {
-    return items.map(({ href, content, children }, index) => (
+    return items.map(({ id, content, children }, index) => (
       <NavigationMenuItem key={index}>
-        {href ? (
-          <NavigationMenuLink href={href}>
+        {id ? (
+          <a href={id} className={'pr-9'}>
             <span className={'text-sm font-medium'}>{content}</span>
-          </NavigationMenuLink>
+          </a>
         ) : (
           <>
             <NavigationMenuTrigger>{content}</NavigationMenuTrigger>
@@ -205,13 +104,13 @@ export default function Header() {
   }
 
   const renderMobileMenu = (items: MenuItem[]) => {
-    return items.map(({ href, content, children }, index) => (
+    return items.map(({ id, content, children }, index) => (
       <AccordionItem value={`item-${index}`} key={index}>
-        {href ? (
+        {id ? (
           <div className={'flex items-center py-4 font-medium'}>
-            <NavigationLink href={href}>
+            <a href={id}>
               <span className={'text-sm font-medium leading-none'}>{content}</span>
-            </NavigationLink>
+            </a>
           </div>
         ) : (
           <>
@@ -252,6 +151,11 @@ export default function Header() {
                 <NavigationMenuList>{renderMenu(menuItems)}</NavigationMenuList>
               </NavigationMenu>
               <div className={'flex gap-3'}>
+                <a href={'#contact'}>
+                  <Button className={'w-full lg:w-auto'} variant={'ghost'}>
+                    {t('contact')}
+                  </Button>
+                </a>
                 {headerRightItems.map(({ href, content }, index) => (
                   <NavigationLink key={index} href={href || '/'} passHref>
                     {content}
@@ -270,13 +174,11 @@ export default function Header() {
         </div>
         <SheetContent side={'right'}>
           <div className={'grid grid-cols-1 gap-5 mt-7'}>
-            {headerRightItems
-              .filter((item) => item.href !== '/')
-              .map(({ href, content }, index) => (
-                <NavigationLink key={index} href={href || '/'} passHref>
-                  {content}
-                </NavigationLink>
-              ))}
+            {headerRightItems.map(({ href, content }, index) => (
+              <NavigationLink key={index} href={href || '/'} passHref>
+                {content}
+              </NavigationLink>
+            ))}
             <ScrollArea className={'h-[75vh]'}>
               <Accordion type='single' collapsible className='w-full'>
                 {renderMobileMenu(menuItems)}

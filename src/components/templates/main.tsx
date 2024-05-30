@@ -54,8 +54,10 @@ export default function MainTemplates() {
           showGradient={false}
         />
       </div>
-      <div className={'container-content mb-32 md:mb-52'}>{sectionTwo(false)}</div>
-      <div className={'container-content group min-h-[100vh]'}>
+      <section id={'solution'} className={'container-content py-16 md:py-24'}>
+        {sectionTwo(false)}
+      </section>
+      <section id={'product'} className={'container-content py-16 group min-h-[100vh]'}>
         <div className={'flex flex-col gap-5 px-6'}>
           <Reveal variant={'top'}>
             <h2 className={'text-center text-4xl font-extrabold'}>Các sản phẩm đã làm cho khách</h2>
@@ -97,8 +99,11 @@ export default function MainTemplates() {
             </Carousel>
           </Reveal>
         </div>
-      </div>
-      <div className={'container-content group min-h-[100vh] flex justify-center items-center'}>
+      </section>
+      <section
+        id={'contact'}
+        className={'container-content py-16 group min-h-[100vh] flex justify-center items-center'}
+      >
         <div className={'flex flex-col gap-5 px-6'}>
           <div className={'text-center flex flex-col gap-5 justify-center items-center'}>
             <Reveal variant={'left'}>
@@ -106,8 +111,8 @@ export default function MainTemplates() {
             </Reveal>
             <Reveal variant={'right'}>
               <p className={'text-xl text-color max-w-[800px]'}>
-                  Whether you&apos;ve got an emergency that requires a rapid solution, or just interested in discussing how the
-                  platform might stop on in the future, we&apos;re here to talk.
+                Whether you&apos;ve got an emergency that requires a rapid solution, or just interested in discussing
+                how the platform might stop on in the future, we&apos;re here to talk.
               </p>
             </Reveal>
           </div>
@@ -190,7 +195,7 @@ export default function MainTemplates() {
             </div>
           </Reveal>
         </div>
-      </div>
+      </section>
     </div>
   )
 }
