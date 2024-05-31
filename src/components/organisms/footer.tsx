@@ -1,3 +1,4 @@
+'use client'
 import * as React from 'react'
 import { MenuItem } from '@/types/app'
 import { useTranslations } from 'next-intl'
@@ -7,33 +8,33 @@ import Preferences from '@/components/molecules/preferences'
 import { Facebook, Github, Linkedin, Youtube } from 'lucide-react'
 import { Button } from '@/components/atoms/button'
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/atoms/collapsible'
+import { usePathname } from 'next/navigation'
 
 export default function Footer() {
+  const pathname = usePathname()
+  const slicePathname = pathname.slice(6)
   const t = useTranslations('Navbar')
   const menuItems: MenuItem[] = [
-    { content: t('products'), children: [{ title: 'tool', href: '/' }] },
     {
-      content: t('resources'),
-      children: [
-        { title: t('docs'), href: '/' },
-        { title: t('pricing'), href: '/' },
-        { title: t('customer'), href: '/' }
-      ]
+      id: slicePathname === '' ? '#products' : '/#products',
+      content: t('products')
     },
     {
-      content: t('company'),
-      children: [
-        { title: t('docs'), href: '/' },
-        { title: t('pricing'), href: '/' },
-        { title: t('customer'), href: '/' }
-      ]
+      id: slicePathname === '' ? '#products' : '/#products',
+      content: t('resources')
+    },
+    {
+      id: slicePathname === '' ? '#products' : '/#products',
+      content: t('company')
     }
   ]
 
   const renderMenu = (items: MenuItem[]) => {
-    return items.map(({ content, children }, index) => (
+    return items.map(({ id, content, children }, index) => (
       <div key={index} className={'flex flex-col'}>
-        <Label className={'text-base'}>{content}</Label>
+        <a href={id ?? '#'} className={'hover:cursor-pointer'}>
+          <Label className={'text-base'}>{content}</Label>
+        </a>
         <ul className={'grid grid-cols-2'}>
           {children &&
             children.map((item, index) => (

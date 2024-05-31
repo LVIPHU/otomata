@@ -19,8 +19,11 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/atoms/sheet'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/atoms/accordion'
 import { ScrollArea } from '@/components/atoms/scroll-area'
 import useMediaQuery from '@/hooks/use-media-query'
+import { usePathname } from 'next/navigation'
 
 export default function Header() {
+  const pathname = usePathname()
+  const slicePathname = pathname.slice(6)
   const t = useTranslations('Navbar')
   const { scrollY } = useScroll()
   const isDesktop = useMediaQuery('(min-width: 1024px)')
@@ -35,15 +38,15 @@ export default function Header() {
   })
   const menuItems: MenuItem[] = [
     {
-      id: '#solution',
+      id: slicePathname === '' ? '#solution' : '/#solution',
       content: t('solutions')
     },
     {
-      id: '#product',
+      id: slicePathname === '' ? '#products' : '/#products',
       content: t('products')
     },
     {
-      id: '#pricing',
+      id: slicePathname === '' ? '#pricing' : '/#pricing',
       content: t('pricing')
     }
   ]

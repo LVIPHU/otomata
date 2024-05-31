@@ -2,7 +2,7 @@
 
 import { MacbookScroll } from '@/components/molecules/macbook-scroll'
 import Image from 'next/image'
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import Autoplay from 'embla-carousel-autoplay'
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/atoms/card'
@@ -15,8 +15,11 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Textarea } from '@/components/atoms/textarea'
 import Reveal from '@/components/molecules/reveal'
+import { usePathname, useSearchParams } from 'next/navigation'
 
 export default function MainTemplates() {
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
   const plugin = useRef(Autoplay({ delay: 20000, stopOnInteraction: true }))
   const form = useForm<ContactBodyType>({
     resolver: zodResolver(ContactBody),
@@ -28,6 +31,22 @@ export default function MainTemplates() {
       message: ''
     }
   })
+
+  useEffect(() => {
+    if (pathname && searchParams) {
+      const hash = window.location.hash
+      if (hash) {
+        const elementId = hash.substring(1) // Loại bỏ dấu #
+        const element = document.getElementById(elementId)
+        if (element) {
+          window.scrollTo({
+            top: element.offsetTop,
+            behavior: 'smooth'
+          })
+        }
+      }
+    }
+  }, [pathname, searchParams])
 
   async function onSubmit(values: ContactBodyType) {}
 
@@ -57,7 +76,7 @@ export default function MainTemplates() {
       <section id={'solution'} className={'container-content py-16 md:py-24'}>
         {sectionTwo(false)}
       </section>
-      <section id={'product'} className={'container-content py-16 group min-h-[100vh]'}>
+      <section id={'products'} className={'container-content py-16 group min-h-[100vh]'}>
         <div className={'flex flex-col gap-5 px-6'}>
           <Reveal variant={'top'}>
             <h2 className={'text-center text-4xl font-extrabold'}>Các sản phẩm đã làm cho khách</h2>
