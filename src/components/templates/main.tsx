@@ -16,9 +16,11 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Textarea } from '@/components/atoms/textarea'
 import Reveal from '@/components/molecules/reveal'
 import { usePathname, useSearchParams } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 
 export default function MainTemplates() {
   const pathname = usePathname()
+  const t = useTranslations('Main')
   const searchParams = useSearchParams()
   const plugin = useRef(Autoplay({ delay: 20000, stopOnInteraction: true }))
   const form = useForm<ContactBodyType>({
@@ -58,14 +60,11 @@ export default function MainTemplates() {
             <div className={'max-w-[800px] flex flex-col gap-5 text-center'}>
               <Reveal variant={'right'}>
                 <h1 className={'text-5xl font-extrabold'}>
-                  Đêm OT ta đi ăn 🍜 <br /> Task gì việc gì tool này lo hết
+                  {t('section.1.title')} <br /> {t('section.1.sub-title')}
                 </h1>
               </Reveal>
               <Reveal variant={'left'}>
-                <p className={'text-xl text-color'}>
-                  OTOMATA là dự án freelance được ra đời để giúp 💪 các anh chị em văn phòng tự động hoá những công việc
-                  văn phòng trong công ty, chỉ với vài ngày lương và vài cú click.
-                </p>
+                <p className={'text-xl text-color'}>{t('section.1.description')}</p>
               </Reveal>
             </div>
           }

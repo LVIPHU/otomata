@@ -34,7 +34,7 @@ export default function Reveal({ children, width = '100%', variant = 'bottom' }:
   }
 
   return (
-    <div ref={ref} className={'relative overflow-hidden'} style={{ width }}>
+    <div ref={ref} className={'relative overflow-hidden p-1'} style={{ width }}>
       <motion.div
         variants={renderVariants()}
         initial={'hidden'}
