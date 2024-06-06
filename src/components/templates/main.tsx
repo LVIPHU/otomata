@@ -16,7 +16,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Textarea } from '@/components/atoms/textarea'
 import Reveal from '@/components/molecules/reveal'
 import { usePathname, useSearchParams } from 'next/navigation'
-import { useTranslations } from 'next-intl'
+import { MessageKeys, useTranslations } from 'next-intl'
 
 export default function MainTemplates() {
   const pathname = usePathname()
@@ -68,17 +68,17 @@ export default function MainTemplates() {
               </Reveal>
             </div>
           }
-          content={<div className={'container-content'}>{sectionTwo(true)}</div>}
+          content={<div className={'container-content'}>{sectionTwo(true, t)}</div>}
           showGradient={false}
         />
       </div>
       <section id={'solution'} className={'container-content py-16 md:py-24'}>
-        {sectionTwo(false)}
+        {sectionTwo(false, t)}
       </section>
       <section id={'products'} className={'container-content py-16 group min-h-[100vh]'}>
         <div className={'flex flex-col gap-5 px-6'}>
           <Reveal variant={'top'}>
-            <h2 className={'text-center text-4xl font-extrabold'}>Các sản phẩm đã làm cho khách</h2>
+            <h2 className={'text-center text-4xl font-extrabold'}>{t('section.3.title')}</h2>
           </Reveal>
           <Reveal variant={'bottom'}>
             <Carousel
@@ -125,12 +125,11 @@ export default function MainTemplates() {
         <div className={'flex flex-col gap-5 px-6'}>
           <div className={'text-center flex flex-col gap-5 justify-center items-center'}>
             <Reveal variant={'left'}>
-              <h2 className={'text-4xl font-extrabold'}>Ready to talk?</h2>
+              <h2 className={'text-4xl font-extrabold'}>{t('section.4.title')}</h2>
             </Reveal>
             <Reveal variant={'right'}>
-              <p className={'text-xl text-color max-w-[800px]'}>
-                Whether you&apos;ve got an emergency that requires a rapid solution, or just interested in discussing
-                how the platform might stop on in the future, we&apos;re here to talk.
+              <p className={'text-xl text-color max-w-[824px]'}>
+                  {t('section.4.description')}
               </p>
             </Reveal>
           </div>
@@ -144,9 +143,9 @@ export default function MainTemplates() {
                       name='fullName'
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Full name</FormLabel>
+                          <FormLabel>{t('section.4.form.full-name.label')}</FormLabel>
                           <FormControl>
-                            <Input placeholder='Your full name' {...field} />
+                            <Input placeholder={t('section.4.form.full-name.placeholder')} {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -157,9 +156,9 @@ export default function MainTemplates() {
                       name='company'
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Company</FormLabel>
+                          <FormLabel>{t('section.4.form.company.label')}</FormLabel>
                           <FormControl>
-                            <Input placeholder='Your company name' {...field} />
+                            <Input placeholder={t('section.4.form.company.placeholder')} {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -171,9 +170,9 @@ export default function MainTemplates() {
                     name='email'
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Email</FormLabel>
+                        <FormLabel>{t('section.4.form.email.label')}</FormLabel>
                         <FormControl>
-                          <Input placeholder='Your email address' {...field} />
+                          <Input placeholder={t('section.4.form.email.placeholder')} {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -184,9 +183,9 @@ export default function MainTemplates() {
                     name='subject'
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Subject</FormLabel>
+                        <FormLabel>{t('section.4.form.subject.label')}</FormLabel>
                         <FormControl>
-                          <Input placeholder='Open Source' {...field} />
+                          <Input placeholder={t('section.4.form.subject.placeholder')} {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -197,16 +196,16 @@ export default function MainTemplates() {
                     name='message'
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Message</FormLabel>
+                        <FormLabel>{t('section.4.form.message.label')}</FormLabel>
                         <FormControl>
-                          <Textarea placeholder='What can we help?' {...field} />
+                          <Textarea placeholder={t('section.4.form.message.placeholder')} {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
                   <Button type='submit' className={'w-full !mt-10'}>
-                    Submit
+                      {t('actions.submit')}
                   </Button>
                 </form>
               </Form>
@@ -218,15 +217,15 @@ export default function MainTemplates() {
   )
 }
 
-const sectionTwo = (isLid: boolean) => {
+const sectionTwo = (isLid: boolean, t: (value: string) => string) => {
   return (
     <div className={cn('flex flex-col', isLid ? 'gap-16' : 'gap-20')}>
       <Reveal variant={'left'}>
         <h2 className={cn('text-center', isLid ? 'text-3xl font-bold' : 'text-4xl font-extrabold')}>
-          OTOMATA sẽ làm gì cho bạn ?
+          {t('section.2.title')}
         </h2>
       </Reveal>
-      {dataSection2.map(({ image, content }, index) => (
+      {dataSection2(t).map(({ image, content }, index) => (
         <div key={index} className={cn('grid grid-cols-1 md:grid-cols-2', isLid ? 'gap-8' : 'gap-10')}>
           <Reveal variant={'bottom'}>
             <Image
@@ -253,15 +252,14 @@ const sectionTwo = (isLid: boolean) => {
   )
 }
 
-const dataSection2 = [
+const dataSection2 = (t: (value: string) => string) => [
   {
     image: '/images/placeholder-image.svg',
     content: (
       <p className={'text-color'}>
-        {' '}
-        Chạy luồng công việc phức tạp với tool được thiết kế riêng cho bạn hoặc công ty bạn, với quy trình dễ hiểu và
-        đơn giản. <br /> Bạn đặt lịch tư vấn, đợi mình làm xong app giao cho bạn, bạn nhập liệu, bạn cấu hình tool rồi
-        bấm nút chạy.{' '}
+        {t('section.2.content.first.1')}
+        <br />
+        {t('section.2.content.first.2')}
       </p>
     )
   },
@@ -269,9 +267,9 @@ const dataSection2 = [
     image: '/images/placeholder-image.svg',
     content: (
       <p className={'text-color'}>
-        Tự động hoá những quy trình, nghiệp vụ thủ công bạn phải làm đi làm lại quanh năm suốt tháng.
+        {t('section.2.content.second.1')}
         <br />
-        Có thể tự động hoá những quy trình ngõ ngách mà những sản phẩm tự động hoá trên thị trường chưa có làm được.
+        {t('section.2.content.second.2')}
       </p>
     )
   },
@@ -279,10 +277,9 @@ const dataSection2 = [
     image: '/images/placeholder-image.svg',
     content: (
       <p className={'text-color'}>
-        {' '}
-        Bảo hành 3 tháng sau khi giao tool.
+        {t('section.2.content.third.1')}
         <br />
-        Được hỗ trợ 30% chi phí thiết kế lại tool khi task văn phòng bạn có xảy ra thay đổi
+        {t('section.2.content.third.2')}
       </p>
     )
   }
