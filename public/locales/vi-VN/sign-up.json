@@ -1,9 +1,10 @@
 {
-  "SignIn": {
-    "title": "Đăng nhập vào Otomata",
-    "infor": "Không có tài khoản?",
+  "SignUp": {
+    "title": "Tạo Tài Khoản Otomata Của Bạn",
+    "infor": "Nếu bạn tham gia, bạn đồng ý với",
     "links": {
-      "sign-up": "Đăng Ký"
+      "terms": "Điều khoản Dịch vụ",
+      "privacy-policy": "Chính sách Bảo mật"
     },
     "actions": {
       "submit": "Gửi"
@@ -22,7 +23,15 @@
         "error": {
           "min": "Chuỗi phải chứa ít nhất 2 ký tự"
         }
+      },
+      "confirm-password": {
+        "label": "Xác nhận mật khẩu",
+        "placeholder": "Nhập lại mật khẩu",
+        "error": {
+          "min": "Chuỗi phải chứa ít nhất 2 ký tự"
+        }
       }
-    }
+    },
+    "and": "và"
   }
 }

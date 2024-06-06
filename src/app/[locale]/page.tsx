@@ -1,11 +1,30 @@
-import { unstable_setRequestLocale } from 'next-intl/server'
+'use client'
+import MainTemplates from '@/components/templates/main'
+import { useEffect, useState } from 'react'
+import LoadingTemplates from '@/components/templates/loading'
 
 type Props = {
   params: { locale: string }
 }
 
 export default function Home({ params: { locale } }: Props) {
-  unstable_setRequestLocale(locale)
+  const [isLoading, setIsLoading] = useState(true)
 
-  return <main className='flex flex-col items-center justify-between p-24'>MAIN</main>
+  useEffect(() => {
+    // Giả lập quá trình tải dữ liệu hoặc chuẩn bị trang
+    const timer = setTimeout(() => {
+      setIsLoading(false)
+    }, 2000) // 2 giây
+
+    return () => clearTimeout(timer)
+  }, [])
+
+  if (isLoading) {
+    return <LoadingTemplates />
+  }
+  return (
+    <main>
+      <MainTemplates></MainTemplates>
+    </main>
+  )
 }

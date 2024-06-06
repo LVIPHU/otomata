@@ -1,0 +1,20 @@
+{
+  "Main": {
+    "section": {
+      "1": {
+        "title": "Đêm OT ta đi ăn \uD83C\uDF5C",
+        "sub-title": "Task gì việc gì tool này lo hết",
+        "description": "OTOMATA là dự án freelance được ra đời để giúp \uD83D\uDCAA các anh chị em văn phòng tự động hoá những công việc văn phòng trong công ty, chỉ với vài ngày lương và vài cú click."
+      },
+      "2": {
+        "title": "OTOMATA sẽ làm gì cho bạn ?",
+        "content": {
+          "first": {
+            "1": "Chạy luồng công việc phức tạp với tool được thiết kế riêng cho bạn hoặc công ty bạn, với quy trình dễ hiểu và đơn giản.",
+            "2": "Bạn đặt lịch tư vấn, đợi mình làm xong app giao cho bạn, bạn nhập liệu, bạn cấu hình tool rồi bấm nút chạy."
+          }
+        }
+      }
+    }
+  }
+}

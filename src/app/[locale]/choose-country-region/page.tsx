@@ -1,6 +1,11 @@
 import NavigationLink from '@/components/atoms/navigation-link'
 import { AppLocales } from '@/libs/next-intl/config'
 import { cn } from '@/libs/utils'
+import { unstable_setRequestLocale } from 'next-intl/server'
+
+type Props = {
+  params: { locale: string }
+}
 
 interface FooterItem {
   title: string
@@ -10,7 +15,9 @@ interface FooterItem {
   }[]
 }
 
-export default function ChooseCountryRegion() {
+export default function ChooseCountryRegion({ params: { locale } }: Props) {
+  unstable_setRequestLocale(locale)
+
   const data: FooterItem[] = [
     {
       title: 'Asia Pacific',

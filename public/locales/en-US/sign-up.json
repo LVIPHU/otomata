@@ -1,9 +1,10 @@
 {
-  "SignIn": {
-    "title": "Log in to Otomata",
-    "infor": "Don't have an account?",
+  "SignUp": {
+    "title": "Create Your Otomata Account",
+    "infor": "By joining, you agree to our",
     "links": {
-      "sign-up": "Sign Up"
+      "terms": "Terms of Service",
+      "privacy-policy": "Privacy Policy"
     },
     "actions": {
       "submit": "Submit"
@@ -22,7 +23,15 @@
         "error": {
           "min": "String must contain at least 2 character(s)"
         }
+      },
+      "confirm-password": {
+        "label": "Confirm password",
+        "placeholder": "Enter confirm password",
+        "error": {
+          "min": "String must contain at least 2 character(s)"
+        }
       }
-    }
+    },
+    "and": "and"
   }
 }

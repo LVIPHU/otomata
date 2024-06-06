@@ -7,8 +7,15 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Input } from '@/components/atoms/input'
 import { RegisterBodyType, RegisterBody } from '@/libs/utils'
 import NavigationLink from '@/components/atoms/navigation-link'
+import { createUserWithEmailAndPassword } from '@firebase/auth'
+import { useRouter } from '@/libs/next-intl/navigation'
+import { useFirebaseContext } from '@/provider/firebase-auth'
+import { useTranslations } from 'next-intl'
 
 export default function SignUpTemplates() {
+  const router = useRouter()
+  const { auth } = useFirebaseContext()
+  const t = useTranslations('SignUp')
   const form = useForm<RegisterBodyType>({
     resolver: zodResolver(RegisterBody),
     defaultValues: {
@@ -18,14 +25,22 @@ export default function SignUpTemplates() {
     }
   })
 
-  function onSubmit(values: RegisterBodyType) {
-    console.log(values)
+  async function onSubmit(values: RegisterBodyType) {
+    try {
+      const { username, password } = values
+      const credential = await createUserWithEmailAndPassword(auth, username, password)
+      if (credential.user) {
+        router.back()
+      }
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   return (
     <div className={'flex flex-col gap-5 justify-center items-center'}>
       <div className={'w-[400px]'}>
-        <h1 className={'text-5xl font-black text-center'}>Create Your Otomata Account</h1>
+        <h1 className={'text-5xl font-black text-center'}>{t('title')}</h1>
       </div>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-5 max-w-[600px] flex-shrink-0 w-full'>
@@ -34,9 +49,9 @@ export default function SignUpTemplates() {
             name='username'
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Username</FormLabel>
+                <FormLabel>{t('form.username.label')}</FormLabel>
                 <FormControl>
-                  <Input placeholder='Enter username' {...field} />
+                  <Input placeholder={t('form.username.placeholder')} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -47,9 +62,9 @@ export default function SignUpTemplates() {
             name='password'
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Password</FormLabel>
+                <FormLabel>{t('form.password.label')}</FormLabel>
                 <FormControl>
-                  <Input placeholder='Enter password' type={'password'} {...field} />
+                  <Input placeholder={t('form.password.placeholder')} type={'password'} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -60,23 +75,23 @@ export default function SignUpTemplates() {
             name='confirmPassword'
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Confirm password</FormLabel>
+                <FormLabel>{t('form.confirm-password.label')}</FormLabel>
                 <FormControl>
-                  <Input placeholder='Enter confirm password' type={'password'} {...field} />
+                  <Input placeholder={t('form.confirm-password.placeholder')} type={'password'} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
           <Button type='submit' className={'w-full !mt-10'}>
-            Submit
+            {t('actions.submit')}
           </Button>
         </form>
       </Form>
-      <div className={'flex justify-center items-center py-8'}>
+      <div className={'flex text-center justify-center items-center py-8'}>
         <p>
-          By joining, you agree to our <NavigationLink href={'/legal/privacy-policy'}>Terms of Service</NavigationLink>{' '}
-          and <NavigationLink href={'/legal/terms'}>Privacy Policy</NavigationLink>
+          {t('infor')} <NavigationLink href={'/legal/privacy-policy'}>{t('links.privacy-policy')}</NavigationLink>{' '}
+          {t('and')} <NavigationLink href={'/legal/terms'}>{t('links.terms')}</NavigationLink>
         </p>
       </div>
     </div>
