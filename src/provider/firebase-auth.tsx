@@ -4,6 +4,7 @@ import useFirebaseAuth from '@/hooks/use-firebase-auth'
 import { ReactNode, useContext } from 'react'
 
 const FirebaseContext = React.createContext<any>(null)
+
 type Props = {
   children: ReactNode
 }

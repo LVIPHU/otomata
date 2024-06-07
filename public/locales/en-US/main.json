@@ -1,8 +1,59 @@
 {
   "Main": {
+    "actions": {
+      "submit": "Submit"
+    },
     "section": {
       "1": {
-        "title": "Đêm OT ta đi ăn \uD83C\uDF5CTask gì việc gì tool này lo hết"
+        "title": "OT Night Out \uD83C\uDF5C",
+        "sub-title": "No worries about tasks, this tool handles everything",
+        "description": "OTOMATA is a freelance project born to help \uD83D\uDCAA office workers automate office tasks in their company, with just a few days' salary and a few clicks."
+      },
+      "2": {
+        "title": "What will OTOMATA do for you?",
+        "content": {
+          "first": {
+            "1": "Run complex workflows with tools designed specifically for you or your company, with easy-to-understand and simple processes.",
+            "2": "You schedule a consultation, wait for me to finish the app and deliver it to you, you enter the data, configure the tool, and then press the run button."
+          },
+          "second": {
+            "1": "Automate the manual processes and tasks you have to repeat year-round.",
+            "2": "Can automate niche processes that current market automation products can't handle."
+          },
+          "third": {
+            "1": "3-month warranty after delivering the tool.",
+            "2": "Get 30% off the cost of redesigning the tool when your office tasks change."
+          }
+        }
+      },
+      "3": {
+        "title": "Products made for clients"
+      },
+      "4": {
+        "title": "Ready to talk?",
+        "description": "Whether you've got an emergency that requires a rapid solution, or just interested in discussing how the platform might stop on in the future, we're here to talk.",
+        "form": {
+          "full-name": {
+            "label": "Full name",
+            "placeholder": "Your full name"
+          },
+          "company": {
+            "label": "Company",
+            "placeholder": "Your company name"
+          },
+          "email": {
+            "label": "Email",
+            "placeholder": "Your email address"
+          },
+          "subject": {
+            "label": "Subject",
+            "placeholder": "Open Source"
+          },
+          "message": {
+            "label": "Message",
+            "placeholder": "What can we help?"
+          }
+        }
       }
     }
   }

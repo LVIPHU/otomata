@@ -1,5 +1,8 @@
 {
   "Main": {
+    "actions": {
+      "submit": "Gửi"
+    },
     "section": {
       "1": {
         "title": "Đêm OT ta đi ăn \uD83C\uDF5C",
@@ -12,6 +15,43 @@
           "first": {
             "1": "Chạy luồng công việc phức tạp với tool được thiết kế riêng cho bạn hoặc công ty bạn, với quy trình dễ hiểu và đơn giản.",
             "2": "Bạn đặt lịch tư vấn, đợi mình làm xong app giao cho bạn, bạn nhập liệu, bạn cấu hình tool rồi bấm nút chạy."
+          },
+          "second": {
+            "1": "Tự động hoá những quy trình, nghiệp vụ thủ công bạn phải làm đi làm lại quanh năm suốt tháng.",
+            "2": "Có thể tự động hoá những quy trình ngõ ngách mà những sản phẩm tự động hoá trên thị trường chưa có làm được."
+          },
+          "third": {
+            "1": "Bảo hành 3 tháng sau khi giao tool.",
+            "2": "Được hỗ trợ 30% chi phí thiết kế lại tool khi task văn phòng bạn có xảy ra thay đổi."
+          }
+        }
+      },
+      "3": {
+        "title": "Các sản phẩm đã làm cho khách"
+      },
+      "4": {
+        "title": "Bạn có sẵn sàng trò chuyện với chúng tôi?",
+        "description": "Dù bạn đang gặp trường hợp khẩn cấp cần giải pháp nhanh chóng, hay chỉ quan tâm đến việc thảo luận về cách nền tảng có thể hỗ trợ trong tương lai, chúng tôi luôn sẵn sàng trò chuyện.",
+        "form": {
+          "full-name": {
+            "label": "Họ và tên",
+            "placeholder": "Tên đầy đủ của bạn"
+          },
+          "company": {
+            "label": "Công ty",
+            "placeholder": "Tên công ty của bạn"
+          },
+          "email": {
+            "label": "Email",
+            "placeholder": "Địa chỉ email của bạn"
+          },
+          "subject": {
+            "label": "Chủ đề",
+            "placeholder": "Nhập yêu cầu"
+          },
+          "message": {
+            "label": "Tin nhắn",
+            "placeholder": "Chúng tôi có thể giúp gì cho bạn?"
           }
         }
       }

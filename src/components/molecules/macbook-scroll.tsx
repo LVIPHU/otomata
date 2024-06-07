@@ -149,7 +149,7 @@ export const Lid = ({
       >
         <div className='absolute inset-0 dark:bg-[#272729] bg-[#f5f5f5] rounded-lg' />
         <div className={'absolute rounded-lg w-full h-full inset-0 overflow-hidden'}>
-          <div className={'w-full h-full overflow-scroll'}>{content}</div>
+          <div className={'w-full h-full'}>{content}</div>
         </div>
       </motion.div>
     </div>
