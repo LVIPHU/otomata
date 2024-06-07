@@ -17,6 +17,11 @@
     "sign-up": "Sign Up",
     "solutions": "Solutions",
     "terms": "Terms of Service",
-    "privacy-policy": "Privacy Policy"
+    "privacy-policy": "Privacy Policy",
+    "notifications": {
+      "success": {
+        "sign-out": "User signed out"
+      }
+    }
   }
 }

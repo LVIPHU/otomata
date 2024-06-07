@@ -9,6 +9,9 @@
     "actions": {
       "submit": "Submit"
     },
+    "notifications": {
+      "success": "Sign up success"
+    },
     "form": {
       "username": {
         "label": "Username",

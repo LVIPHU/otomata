@@ -17,6 +17,11 @@
     "sign-up": "Đăng ký",
     "solutions": "Giải pháp",
     "terms": "Điều khoản Dịch vụ",
-    "privacy-policy": "Chính sách Bảo mật"
+    "privacy-policy": "Chính sách Bảo mật",
+    "notifications": {
+      "success": {
+        "sign-out": "Người dùng đã đăng xuất"
+      }
+    }
   }
 }

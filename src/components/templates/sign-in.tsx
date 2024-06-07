@@ -31,22 +31,22 @@ export default function SignInTemplates() {
       const credential = await signInWithEmailAndPassword(auth, username, password)
       if (credential.user) {
         router.back()
-        toast.success('Sign in success.')
+        toast.success(t('notifications.success'))
       }
     } catch (error) {
       // @ts-ignore
       switch (error.code) {
         case 'auth/invalid-email':
-          toast.error('Invalid email.')
+          toast.error(t('notifications.error.invalid-email'))
           break
         case 'auth/user-not-found':
-          toast.error('No account with that email was found.')
+          toast.error(t('notifications.error.user-not-found'))
           break
         case 'auth/wrong-password':
-          toast.error('Incorrect password.')
+          toast.error(t('notifications.error.wrong-password'))
           break
         default:
-          toast.error('Email or password was incorrect.')
+          toast.error(t('notifications.error.default'))
           break
       }
     }

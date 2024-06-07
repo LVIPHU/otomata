@@ -71,7 +71,7 @@ export default function Header() {
   const renderRightItem = () => {
     let loggingOutUser = () => {
       signOut(auth).then(() => {
-        toast.info('User signed out')
+        toast.success(t('notifications.success.sign-out'))
         router.push('/sign-in')
       })
     }
@@ -117,38 +117,6 @@ export default function Header() {
         </>
       )
     }
-  }
-
-  const renderMobileMenu = (items: MenuItem[]) => {
-    return items.map(({ id, content, children }, index) => (
-      <AccordionItem value={`item-${index}`} key={index}>
-        {id ? (
-          <div className={'flex items-center py-4 font-medium'}>
-            <a href={id}>
-              <span className={'text-sm font-medium leading-none'}>{content}</span>
-            </a>
-          </div>
-        ) : (
-          <>
-            <AccordionTrigger>
-              <span>{content}</span>
-            </AccordionTrigger>
-            <AccordionContent>
-              <ul className='grid gap-3 p-4'>
-                {children &&
-                  children.map((item, index) => (
-                    <li key={index}>
-                      <NavigationLink href={item.href ?? '/'}>
-                        <span className='text-sm font-medium leading-none'>{item.title}</span>
-                      </NavigationLink>
-                    </li>
-                  ))}
-              </ul>
-            </AccordionContent>
-          </>
-        )}
-      </AccordionItem>
-    ))
   }
 
   return (

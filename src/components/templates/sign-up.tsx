@@ -32,7 +32,7 @@ export default function SignUpTemplates() {
       const credential = await createUserWithEmailAndPassword(auth, username, password)
       if (credential.user) {
         router.back()
-        toast.success('Sign up success.')
+        toast.success(t('notifications.success'))
       }
     } catch (error) {
       // @ts-ignore
