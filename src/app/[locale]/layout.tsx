@@ -4,6 +4,7 @@ import { locales } from '@/libs/next-intl/config'
 import { getTranslations } from 'next-intl/server'
 import Footer from '@/components/organisms/footer'
 import Header from '@/components/organisms/header'
+import { Toaster } from '@/components/atoms/sonner'
 import ProviderRegistry from '@/provider'
 
 const roboto = Roboto({
@@ -40,6 +41,7 @@ export default async function LocaleLayout({ children, modal, params }: Props) {
           {children}
           {modal}
           <Footer />
+          <Toaster richColors position='top-right' />
         </ProviderRegistry>
       </body>
     </html>
