@@ -11,6 +11,7 @@ import { createUserWithEmailAndPassword } from '@firebase/auth'
 import { useRouter } from '@/libs/next-intl/navigation'
 import { useFirebaseContext } from '@/provider/firebase-auth'
 import { useTranslations } from 'next-intl'
+import { toast } from 'sonner'
 
 export default function SignUpTemplates() {
   const router = useRouter()
@@ -31,9 +32,11 @@ export default function SignUpTemplates() {
       const credential = await createUserWithEmailAndPassword(auth, username, password)
       if (credential.user) {
         router.back()
+        toast.success('Sign up success.')
       }
     } catch (error) {
-      console.error(error)
+      // @ts-ignore
+      toast.error(error.message)
     }
   }
 

@@ -11,6 +11,7 @@ import { useFirebaseContext } from '@/provider/firebase-auth'
 import { signInWithEmailAndPassword } from '@firebase/auth'
 import { useRouter } from '@/libs/next-intl/navigation'
 import { useTranslations } from 'next-intl'
+import { toast } from 'sonner'
 
 export default function SignInTemplates() {
   const router = useRouter()
@@ -30,21 +31,22 @@ export default function SignInTemplates() {
       const credential = await signInWithEmailAndPassword(auth, username, password)
       if (credential.user) {
         router.back()
+        toast.success('Sign in success.')
       }
     } catch (error) {
       // @ts-ignore
       switch (error.code) {
         case 'auth/invalid-email':
-          console.error('Invalid email')
+          toast.error('Invalid email.')
           break
         case 'auth/user-not-found':
-          console.error('No account with that email was found.')
+          toast.error('No account with that email was found.')
           break
         case 'auth/wrong-password':
-          console.error('Incorrect password')
+          toast.error('Incorrect password.')
           break
         default:
-          console.error('Email or password was incorrect.')
+          toast.error('Email or password was incorrect.')
           break
       }
     }
