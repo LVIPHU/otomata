@@ -14,15 +14,31 @@ import {
 } from '@/components/atoms/navigation-menu'
 import { cn } from '@/libs/utils'
 import { useState } from 'react'
-import { AlignRight } from 'lucide-react'
+import { AlignRight, LogOut } from 'lucide-react'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/atoms/sheet'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/atoms/accordion'
 import { ScrollArea } from '@/components/atoms/scroll-area'
 import useMediaQuery from '@/hooks/use-media-query'
 import { usePathname } from 'next/navigation'
+import { useFirebaseContext } from '@/provider/firebase-auth'
+import { signOut } from 'firebase/auth'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/atoms/avatar'
+import { toShortName } from '@/libs/utils/text'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuTrigger
+} from '@/components/atoms/dropdown-menu'
+import { useRouter } from '@/libs/next-intl/navigation'
 
 export default function Header() {
+  const router = useRouter()
   const pathname = usePathname()
+  const { user, auth } = useFirebaseContext()
   const slicePathname = pathname.slice(6)
   const t = useTranslations('Navbar')
   const { scrollY } = useScroll()
@@ -51,91 +67,55 @@ export default function Header() {
     }
   ]
 
-  const headerRightItems: MenuItem[] = [
-    // {
-    //   content: (
-    //     <Button className={'w-full lg:w-auto'} variant={'ghost'}>
-    //       {t('contact')}
-    //     </Button>
-    //   ),
-    //   href: '/'
-    // },
-    {
-      content: (
-        <Button className={'w-full lg:w-auto'} variant={'outline'}>
-          {t('sign-in')}
-        </Button>
-      ),
-      href: '/sign-in'
-    },
-    { content: <Button className={'w-full lg:w-auto'}>{t('sign-up')}</Button>, href: '/sign-up' }
-  ]
 
-  const renderMenu = (items: MenuItem[]) => {
-    return items.map(({ id, content, children }, index) => (
-      <NavigationMenuItem key={index}>
-        {id ? (
-          <a href={id} className={'pr-9'}>
-            <span className={'text-sm font-medium'}>{content}</span>
-          </a>
-        ) : (
-          <>
-            <NavigationMenuTrigger>{content}</NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <ul className='grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]'>
-                {children &&
-                  children.map((item, index) => (
-                    <li key={index}>
-                      <NavigationMenuLink href={item.href ?? '/'}>
-                        <div
-                          className={cn(
-                            'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground'
-                          )}
-                        >
-                          <div className='text-sm font-medium leading-none'>{item.title}</div>
-                          <p className='line-clamp-2 text-sm leading-snug text-muted-foreground'>{item.description}</p>
-                        </div>
-                      </NavigationMenuLink>
-                    </li>
-                  ))}
-              </ul>
-            </NavigationMenuContent>
-          </>
-        )}
-      </NavigationMenuItem>
-    ))
-  }
+  const renderRightItem = () => {
+    let loggingOutUser = () => {
+      signOut(auth).then(() => {
+        router.push('/sign-in')
+      })
+    }
 
-  const renderMobileMenu = (items: MenuItem[]) => {
-    return items.map(({ id, content, children }, index) => (
-      <AccordionItem value={`item-${index}`} key={index}>
-        {id ? (
-          <div className={'flex items-center py-4 font-medium'}>
-            <a href={id}>
-              <span className={'text-sm font-medium leading-none'}>{content}</span>
-            </a>
-          </div>
-        ) : (
-          <>
-            <AccordionTrigger>
-              <span>{content}</span>
-            </AccordionTrigger>
-            <AccordionContent>
-              <ul className='grid gap-3 p-4'>
-                {children &&
-                  children.map((item, index) => (
-                    <li key={index}>
-                      <NavigationLink href={item.href ?? '/'}>
-                        <span className='text-sm font-medium leading-none'>{item.title}</span>
-                      </NavigationLink>
-                    </li>
-                  ))}
-              </ul>
-            </AccordionContent>
-          </>
-        )}
-      </AccordionItem>
-    ))
+    if (user) {
+      const name = user.displayName ?? (user.email && user.email.split('@')[0])
+      return (
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Avatar>
+              <AvatarImage src={user.photoURL ?? undefined} alt={name ?? undefined} />
+              <AvatarFallback>{toShortName(name)}</AvatarFallback>
+            </Avatar>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className={'w-56'}>
+            <DropdownMenuLabel>{user.email}</DropdownMenuLabel>
+            <DropdownMenuItem>
+              <span>Profile</span>
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem onClick={loggingOutUser}>
+              <span>Log Out</span>
+              <DropdownMenuShortcut>
+                <LogOut className='h-[1.2rem] w-[1.2rem]' />
+              </DropdownMenuShortcut>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      )
+    } else {
+      return (
+        <>
+          <NavigationLink href={'/sign-in'} passHref>
+            <Button className={'w-full lg:w-auto'} variant={'outline'}>
+              {t('sign-in')}
+            </Button>
+          </NavigationLink>
+          <NavigationLink href={'/sign-up'} passHref>
+            <Button className={'w-full lg:w-auto'} variant={'outline'}>
+              {t('sign-up')}
+            </Button>
+          </NavigationLink>
+        </>
+      )
+    }
   }
 
   return (
@@ -159,11 +139,7 @@ export default function Header() {
                     {t('contact')}
                   </Button>
                 </a>
-                {headerRightItems.map(({ href, content }, index) => (
-                  <NavigationLink key={index} href={href || '/'} passHref>
-                    {content}
-                  </NavigationLink>
-                ))}
+                {renderRightItem()}
               </div>
             </>
           ) : (
@@ -177,11 +153,7 @@ export default function Header() {
         </div>
         <SheetContent side={'right'}>
           <div className={'grid grid-cols-1 gap-5 mt-7'}>
-            {headerRightItems.map(({ href, content }, index) => (
-              <NavigationLink key={index} href={href || '/'} passHref>
-                {content}
-              </NavigationLink>
-            ))}
+            {renderRightItem()}
             <ScrollArea className={'h-[75vh]'}>
               <Accordion type='single' collapsible className='w-full'>
                 {renderMobileMenu(menuItems)}
@@ -192,4 +164,71 @@ export default function Header() {
       </Sheet>
     </motion.header>
   )
+}
+
+const renderMenu = (items: MenuItem[]) => {
+  return items.map(({ id, content, children }, index) => (
+    <NavigationMenuItem key={index}>
+      {id ? (
+        <a href={id} className={'pr-9'}>
+          <span className={'text-sm font-medium'}>{content}</span>
+        </a>
+      ) : (
+        <>
+          <NavigationMenuTrigger>{content}</NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <ul className='grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]'>
+              {children &&
+                children.map((item, index) => (
+                  <li key={index}>
+                    <NavigationMenuLink href={item.href ?? '/'}>
+                      <div
+                        className={cn(
+                          'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground'
+                        )}
+                      >
+                        <div className='text-sm font-medium leading-none'>{item.title}</div>
+                        <p className='line-clamp-2 text-sm leading-snug text-muted-foreground'>{item.description}</p>
+                      </div>
+                    </NavigationMenuLink>
+                  </li>
+                ))}
+            </ul>
+          </NavigationMenuContent>
+        </>
+      )}
+    </NavigationMenuItem>
+  ))
+}
+
+const renderMobileMenu = (items: MenuItem[]) => {
+  return items.map(({ id, content, children }, index) => (
+    <AccordionItem value={`item-${index}`} key={index}>
+      {id ? (
+        <div className={'flex items-center py-4 font-medium'}>
+          <a href={id}>
+            <span className={'text-sm font-medium leading-none'}>{content}</span>
+          </a>
+        </div>
+      ) : (
+        <>
+          <AccordionTrigger>
+            <span>{content}</span>
+          </AccordionTrigger>
+          <AccordionContent>
+            <ul className='grid gap-3 p-4'>
+              {children &&
+                children.map((item, index) => (
+                  <li key={index}>
+                    <NavigationLink href={item.href ?? '/'}>
+                      <span className='text-sm font-medium leading-none'>{item.title}</span>
+                    </NavigationLink>
+                  </li>
+                ))}
+            </ul>
+          </AccordionContent>
+        </>
+      )}
+    </AccordionItem>
+  ))
 }

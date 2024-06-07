@@ -128,9 +128,7 @@ export default function MainTemplates() {
               <h2 className={'text-4xl font-extrabold'}>{t('section.4.title')}</h2>
             </Reveal>
             <Reveal variant={'right'}>
-              <p className={'text-xl text-color max-w-[824px]'}>
-                  {t('section.4.description')}
-              </p>
+              <p className={'text-xl text-color max-w-[824px]'}>{t('section.4.description')}</p>
             </Reveal>
           </div>
           <Reveal variant={'bottom'}>
@@ -205,7 +203,7 @@ export default function MainTemplates() {
                     )}
                   />
                   <Button type='submit' className={'w-full !mt-10'}>
-                      {t('actions.submit')}
+                    {t('actions.submit')}
                   </Button>
                 </form>
               </Form>

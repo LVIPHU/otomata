@@ -24,8 +24,17 @@ export default function Footer() {
       content: t('resources')
     },
     {
-      id: slicePathname === '' ? '#products' : '/#products',
-      content: t('company')
+      content: t('company'),
+      children: [
+        {
+          title: t('terms'),
+          href: '/legal/terms'
+        },
+        {
+          title: t('privacy-policy'),
+          href: '/legal/privacy-policy'
+        }
+      ]
     }
   ]
 
