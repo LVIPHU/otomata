@@ -34,6 +34,7 @@ import {
   DropdownMenuTrigger
 } from '@/components/atoms/dropdown-menu'
 import { useRouter } from '@/libs/next-intl/navigation'
+import { toast } from 'sonner'
 
 export default function Header() {
   const router = useRouter()
@@ -70,6 +71,7 @@ export default function Header() {
   const renderRightItem = () => {
     let loggingOutUser = () => {
       signOut(auth).then(() => {
+        toast.success(t('notifications.success.sign-out'))
         router.push('/sign-in')
       })
     }
@@ -78,7 +80,7 @@ export default function Header() {
       const name = user.displayName ?? (user.email && user.email.split('@')[0])
       return (
         <DropdownMenu>
-          <DropdownMenuTrigger asChild>
+          <DropdownMenuTrigger asChild className={'hover:cursor-pointer'}>
             <Avatar>
               <AvatarImage src={user.photoURL ?? undefined} alt={name ?? undefined} />
               <AvatarFallback>{toShortName(name)}</AvatarFallback>
@@ -86,11 +88,11 @@ export default function Header() {
           </DropdownMenuTrigger>
           <DropdownMenuContent className={'w-56'}>
             <DropdownMenuLabel>{user.email}</DropdownMenuLabel>
-            <DropdownMenuItem>
+            <DropdownMenuItem className={'hover:cursor-pointer'}>
               <span>Account settings</span>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={loggingOutUser}>
+            <DropdownMenuItem className={'hover:cursor-pointer'} onClick={loggingOutUser}>
               <span>Log Out</span>
               <DropdownMenuShortcut>
                 <LogOut className='h-[1.2rem] w-[1.2rem]' />
@@ -103,7 +105,7 @@ export default function Header() {
       return (
         <>
           <NavigationLink href={'/sign-in'} passHref>
-            <Button className={'w-full lg:w-auto'} variant={'outline'}>
+            <Button className={'w-full lg:w-auto'} variant={'default'}>
               {t('sign-in')}
             </Button>
           </NavigationLink>
@@ -115,38 +117,6 @@ export default function Header() {
         </>
       )
     }
-  }
-
-  const renderMobileMenu = (items: MenuItem[]) => {
-    return items.map(({ id, content, children }, index) => (
-      <AccordionItem value={`item-${index}`} key={index}>
-        {id ? (
-          <div className={'flex items-center py-4 font-medium'}>
-            <a href={id}>
-              <span className={'text-sm font-medium leading-none'}>{content}</span>
-            </a>
-          </div>
-        ) : (
-          <>
-            <AccordionTrigger>
-              <span>{content}</span>
-            </AccordionTrigger>
-            <AccordionContent>
-              <ul className='grid gap-3 p-4'>
-                {children &&
-                  children.map((item, index) => (
-                    <li key={index}>
-                      <NavigationLink href={item.href ?? '/'}>
-                        <span className='text-sm font-medium leading-none'>{item.title}</span>
-                      </NavigationLink>
-                    </li>
-                  ))}
-              </ul>
-            </AccordionContent>
-          </>
-        )}
-      </AccordionItem>
-    ))
   }
 
   return (

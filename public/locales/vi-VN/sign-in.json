@@ -8,6 +8,15 @@
     "actions": {
       "submit": "Gửi"
     },
+    "notifications": {
+      "error": {
+        "invalid-email": "Email không hợp lệ",
+        "user-not-found": "Không tìm thấy tài khoản với email này",
+        "wrong-password": "Mật khẩu không chính xác",
+        "default": "Email hoặc mật khẩu không chính xác"
+      },
+      "success": "Đăng nhập thành công"
+    },
     "form": {
       "username": {
         "label": "Tên đăng nhập",

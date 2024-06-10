@@ -8,6 +8,15 @@
     "actions": {
       "submit": "Submit"
     },
+    "notifications": {
+      "error": {
+        "invalid-email": "Invalid email",
+        "user-not-found": "No account with that email was found",
+        "wrong-password": "Incorrect password",
+        "default": "Email or password was incorrect"
+      },
+      "success": "Sign in success"
+    },
     "form": {
       "username": {
         "label": "Username",
