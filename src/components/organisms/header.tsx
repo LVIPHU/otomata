@@ -87,7 +87,7 @@ export default function Header() {
           <DropdownMenuContent className={'w-56'}>
             <DropdownMenuLabel>{user.email}</DropdownMenuLabel>
             <DropdownMenuItem>
-              <span>Profile</span>
+              <span>Account settings</span>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem onClick={loggingOutUser}>
@@ -165,7 +165,7 @@ export default function Header() {
                 <NavigationMenuList>{renderMenu(menuItems)}</NavigationMenuList>
               </NavigationMenu>
               <div className={'flex gap-3'}>
-                <a href={'#contact'}>
+                <a href={slicePathname === '' ? '#contact' : '/#contact'}>
                   <Button className={'w-full lg:w-auto'} variant={'ghost'}>
                     {t('contact')}
                   </Button>
