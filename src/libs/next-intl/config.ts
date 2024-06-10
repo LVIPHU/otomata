@@ -3,10 +3,7 @@ import { Pathnames } from 'next-intl/navigation'
 export const locales = ['vi-VN', 'en-US'] as const
 
 export const pathnames = {
-  '/': {
-    'vi-VN': '/',
-    'en-US': '/'
-  },
+  '/': '/',
   '/choose-country-region': '/choose-country-region',
   '/sign-in': {
     'vi-VN': '/dang-nhap',
