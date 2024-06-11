@@ -1,5 +1,5 @@
 {
-  "name": "e-commerce",
+  "name": "landing-page",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -36,13 +36,10 @@
     "firebase": "^10.9.0",
     "framer-motion": "^11.1.7",
     "lucide-react": "^0.359.0",
-    "next": "14.1.4",
     "next-intl": "^3.9.5",
     "next-nprogress-bar": "^2.3.12",
     "next-themes": "^0.3.0",
     "nookies": "^2.5.2",
-    "react": "^18",
-    "react-dom": "^18",
     "react-hook-form": "^7.51.2",
     "rimraf": "^3.0.2",
     "sonner": "^1.4.41",
