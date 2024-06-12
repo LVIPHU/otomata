@@ -9,6 +9,7 @@ import { Facebook, Github, Linkedin, Youtube } from 'lucide-react'
 import { Button } from '@/components/atoms/button'
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/atoms/collapsible'
 import { usePathname } from 'next/navigation'
+import Logo from '@/components/molecules/logo'
 
 export default function Footer() {
   const pathname = usePathname()
@@ -44,7 +45,7 @@ export default function Footer() {
         <a href={id ?? '#'} className={'hover:cursor-pointer'}>
           <Label className={'text-base'}>{content}</Label>
         </a>
-        <ul className={'grid grid-cols-2'}>
+        <ul className={'grid grid-cols-1'}>
           {children &&
             children.map((item, index) => (
               <li key={index} className={'py-1'}>
@@ -97,7 +98,7 @@ export default function Footer() {
     <footer className={'border-t border-input'}>
       <nav className={'container-content py-8 md:py-12 flex flex-col lg:flex-row lg:gap-6 w-full'}>
         <div className={'flex flex-col pt-2 gap-2 mb-4 lg:mb-0'}>
-          <div>LOGO</div>
+          <Logo />
           <div className={'hidden lg:block'}>{social}</div>
         </div>
         <div className={'hidden lg:grow lg:grid lg:grid-cols-3 gap-6'}>{renderMenu(menuItems)}</div>
