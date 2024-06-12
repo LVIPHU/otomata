@@ -69,7 +69,7 @@ export default function Header() {
   ]
 
   const renderRightItem = () => {
-    let loggingOutUser = () => {
+    const loggingOutUser = () => {
       signOut(auth).then(() => {
         toast.success(t('notifications.success.sign-out'))
         router.push('/sign-in')
@@ -88,7 +88,7 @@ export default function Header() {
           </DropdownMenuTrigger>
           <DropdownMenuContent className={'w-56'}>
             <DropdownMenuLabel>{user.email}</DropdownMenuLabel>
-            <DropdownMenuItem className={'hover:cursor-pointer'}>
+            <DropdownMenuItem className={'hover:cursor-pointer'} onClick={() => router.push('/account')}>
               <span>Account settings</span>
             </DropdownMenuItem>
             <DropdownMenuSeparator />

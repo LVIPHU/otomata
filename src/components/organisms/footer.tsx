@@ -44,7 +44,7 @@ export default function Footer() {
         <a href={id ?? '#'} className={'hover:cursor-pointer'}>
           <Label className={'text-base'}>{content}</Label>
         </a>
-        <ul className={'grid grid-cols-2'}>
+        <ul className={'grid grid-cols-1'}>
           {children &&
             children.map((item, index) => (
               <li key={index} className={'py-1'}>
