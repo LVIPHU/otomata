@@ -11,6 +11,7 @@ type Props = {
 
 export default function FirebaseAuthProvider({ children }: Props) {
   const { firebaseApp, auth, user, loading } = useFirebaseAuth()
+
   return <FirebaseContext.Provider value={{ firebaseApp, auth, user }}>{children} </FirebaseContext.Provider>
 }
 
