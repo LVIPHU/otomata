@@ -35,6 +35,7 @@ import {
 } from '@/components/atoms/dropdown-menu'
 import { useRouter } from '@/libs/next-intl/navigation'
 import { toast } from 'sonner'
+import Logo from '@/components/molecules/logo'
 
 export default function Header() {
   const router = useRouter()
@@ -131,7 +132,7 @@ export default function Header() {
           {isDesktop ? (
             <>
               <NavigationMenu className={'flex'}>
-                <div className={'mr-8'}>LOGO</div>
+                <Logo className={'mr-8'} />
                 <NavigationMenuList>{renderMenu(menuItems)}</NavigationMenuList>
               </NavigationMenu>
               <div className={'flex gap-3'}>
@@ -145,7 +146,7 @@ export default function Header() {
             </>
           ) : (
             <>
-              <div className={'mr-8 block lg:hidden'}>LOGO</div>
+              <Logo className={'mr-8 block lg:hidden'} />
               <SheetTrigger>
                 <AlignRight className={'inline-flex lg:hidden'} />
               </SheetTrigger>
