@@ -23,17 +23,22 @@ import { IconWorld } from '@tabler/icons-react'
 import { IconCommand } from '@tabler/icons-react'
 import { IconCaretLeftFilled } from '@tabler/icons-react'
 import { IconCaretDownFilled } from '@tabler/icons-react'
+import Image from 'next/image'
+
+const logo = '/images/logo/dark.svg'
 
 export const MacbookScroll = ({
   showGradient,
   title,
   content,
-  badge
+  badge,
+  src = logo
 }: {
   showGradient?: boolean
   title?: string | React.ReactNode
   content?: string | React.ReactNode
   badge?: React.ReactNode
+  src?: string
 }) => {
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
@@ -72,7 +77,15 @@ export const MacbookScroll = ({
         {title || <span> TITLE </span>}
       </motion.h2>
       {/* Lid */}
-      <Lid scaleX={scaleX} scaleY={scaleY} rotate={rotate} opacity={opacity} translate={translate} content={content} />
+      <Lid
+        src={src}
+        scaleX={scaleX}
+        scaleY={scaleY}
+        rotate={rotate}
+        opacity={opacity}
+        translate={translate}
+        content={content}
+      />
       {/* Base area */}
       <div className='h-[22rem] w-[32rem] bg-gray-200 dark:bg-[#272729] rounded-2xl overflow-hidden relative -z-10'>
         {/* above keyboard bar */}
@@ -107,7 +120,8 @@ export const Lid = ({
   rotate,
   opacity,
   translate,
-  content
+  content,
+  src
 }: {
   scaleX: MotionValue<number>
   scaleY: MotionValue<number>
@@ -115,6 +129,7 @@ export const Lid = ({
   opacity: MotionValue<number>
   translate: MotionValue<number>
   content?: string | React.ReactNode
+  src: string
 }) => {
   return (
     <div className='relative [perspective:800px]'>
@@ -132,7 +147,7 @@ export const Lid = ({
           }}
           className='absolute inset-0 bg-[#010101] rounded-lg flex items-center justify-center'
         >
-          <span className='text-white'>OTOMATA</span>
+          <Image src={src} style={{ transform: 'rotateX(25deg)' }} alt='otomata logo' height={100} width={100} />
         </div>
       </div>
       <motion.div

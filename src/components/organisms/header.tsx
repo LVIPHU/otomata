@@ -35,6 +35,7 @@ import {
 } from '@/components/atoms/dropdown-menu'
 import { useRouter } from '@/libs/next-intl/navigation'
 import { toast } from 'sonner'
+import Logo from '@/components/molecules/logo'
 
 export default function Header() {
   const router = useRouter()
@@ -69,7 +70,7 @@ export default function Header() {
   ]
 
   const renderRightItem = () => {
-    let loggingOutUser = () => {
+    const loggingOutUser = () => {
       signOut(auth).then(() => {
         toast.success(t('notifications.success.sign-out'))
         router.push('/sign-in')
@@ -88,8 +89,8 @@ export default function Header() {
           </DropdownMenuTrigger>
           <DropdownMenuContent className={'w-56'}>
             <DropdownMenuLabel>{user.email}</DropdownMenuLabel>
-            <DropdownMenuItem className={'hover:cursor-pointer'}>
-              <span>Profile</span>
+            <DropdownMenuItem className={'hover:cursor-pointer'} onClick={() => router.push('/account')}>
+              <span>Account settings</span>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem className={'hover:cursor-pointer'} onClick={loggingOutUser}>
@@ -131,11 +132,11 @@ export default function Header() {
           {isDesktop ? (
             <>
               <NavigationMenu className={'flex'}>
-                <div className={'mr-8'}>LOGO</div>
+                <Logo className={'mr-8'} />
                 <NavigationMenuList>{renderMenu(menuItems)}</NavigationMenuList>
               </NavigationMenu>
               <div className={'flex gap-3'}>
-                <a href={'#contact'}>
+                <a href={slicePathname === '' ? '#contact' : '/#contact'}>
                   <Button className={'w-full lg:w-auto'} variant={'ghost'}>
                     {t('contact')}
                   </Button>
@@ -145,7 +146,7 @@ export default function Header() {
             </>
           ) : (
             <>
-              <div className={'mr-8 block lg:hidden'}>LOGO</div>
+              <Logo className={'mr-8 block lg:hidden'} />
               <SheetTrigger>
                 <AlignRight className={'inline-flex lg:hidden'} />
               </SheetTrigger>

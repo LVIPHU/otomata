@@ -16,7 +16,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Textarea } from '@/components/atoms/textarea'
 import Reveal from '@/components/molecules/reveal'
 import { usePathname, useSearchParams } from 'next/navigation'
-import { MessageKeys, useTranslations } from 'next-intl'
+import { useTranslations } from 'next-intl'
 
 export default function MainTemplates() {
   const pathname = usePathname()
@@ -50,7 +50,9 @@ export default function MainTemplates() {
     }
   }, [pathname, searchParams])
 
-  async function onSubmit(values: ContactBodyType) {}
+  async function onSubmit(values: ContactBodyType) {
+      console.log('values contact', values)
+  }
 
   return (
     <div>
@@ -252,7 +254,7 @@ const sectionTwo = (isLid: boolean, t: (value: string) => string) => {
 
 const dataSection2 = (t: (value: string) => string) => [
   {
-    image: '/images/placeholder-image.svg',
+    image: '/images/thumbnail/1.svg',
     content: (
       <p className={'text-color'}>
         {t('section.2.content.first.1')}
@@ -262,7 +264,7 @@ const dataSection2 = (t: (value: string) => string) => [
     )
   },
   {
-    image: '/images/placeholder-image.svg',
+    image: '/images/thumbnail/2.svg',
     content: (
       <p className={'text-color'}>
         {t('section.2.content.second.1')}
@@ -272,7 +274,7 @@ const dataSection2 = (t: (value: string) => string) => [
     )
   },
   {
-    image: '/images/placeholder-image.svg',
+    image: '/images/thumbnail/3.svg',
     content: (
       <p className={'text-color'}>
         {t('section.2.content.third.1')}

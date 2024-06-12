@@ -20,6 +20,14 @@ export const pathnames = {
   '/legal/terms': {
     'vi-VN': '/hop-phap/dieu-khoan-dich-vu',
     'en-US': '/legal/terms'
+  },
+  '/account': {
+    'vi-VN': '/tai-khoan',
+    'en-US': '/account'
+  },
+  '/account/authentication': {
+    'vi-VN': '/tai-khoan/xac-thuc',
+    'en-US': '/account/authentication'
   }
 } satisfies Pathnames<typeof locales>
 
