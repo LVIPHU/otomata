@@ -1,3 +1,5 @@
+import AccountAuthenticationTemplates from "@/components/templates/account-authentication";
+
 export default function Authentication() {
-  return <div>Authentication</div>
+  return <div><AccountAuthenticationTemplates/></div>
 }

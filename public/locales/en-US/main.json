@@ -3,6 +3,9 @@
     "actions": {
       "submit": "Submit"
     },
+    "notifications": {
+      "success": "email sent success"
+    },
     "section": {
       "1": {
         "title": "OT Night Out \uD83C\uDF5C",

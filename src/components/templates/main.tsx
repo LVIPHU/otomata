@@ -17,6 +17,8 @@ import { Textarea } from '@/components/atoms/textarea'
 import Reveal from '@/components/molecules/reveal'
 import { usePathname, useSearchParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
+import ContactActions from '@/services/actions/contact'
+import { toast } from 'sonner'
 
 export default function MainTemplates() {
   const pathname = usePathname()
@@ -51,7 +53,13 @@ export default function MainTemplates() {
   }, [pathname, searchParams])
 
   async function onSubmit(values: ContactBodyType) {
-      console.log('values contact', values)
+    try {
+      await ContactActions.send(values)
+      toast.success(t('notifications.success'))
+    } catch (error) {
+      // @ts-ignore
+      toast.error(error.message)
+    }
   }
 
   return (

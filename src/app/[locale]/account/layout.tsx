@@ -18,7 +18,7 @@ export default async function AccountLayout({ children }: Readonly<{ children: R
             <ResizablePanel defaultSize={25} className={'mr-6'}>
               <Sidebar />
             </ResizablePanel>
-            <ResizableHandle withHandle />
+            <ResizableHandle />
             <ResizablePanel className={'ml-6'}>{children}</ResizablePanel>
           </ResizablePanelGroup>
         </main>

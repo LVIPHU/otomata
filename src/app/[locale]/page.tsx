@@ -24,7 +24,7 @@ export default function Home({ params: { locale } }: Props) {
   }
   return (
     <main>
-      <MainTemplates></MainTemplates>
+      <MainTemplates/>
     </main>
   )
 }

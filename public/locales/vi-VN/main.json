@@ -3,6 +3,9 @@
     "actions": {
       "submit": "Gửi"
     },
+    "notifications": {
+      "success": "Gửi email thành công"
+    },
     "section": {
       "1": {
         "title": "Đêm OT ta đi ăn \uD83C\uDF5C",
