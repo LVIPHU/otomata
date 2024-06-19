@@ -51,7 +51,7 @@ export default function MainTemplates() {
   }, [pathname, searchParams])
 
   async function onSubmit(values: ContactBodyType) {
-      console.log('values contact', values)
+    console.log('values contact', values)
   }
 
   return (
@@ -74,13 +74,14 @@ export default function MainTemplates() {
           showGradient={false}
         />
       </div>
-      <section id={'solution'} className={'container-content py-16 md:py-24'}>
+      <section id={'solution'} className={'container-content py-16 md:py-24 text-center'}>
         {sectionTwo(false, t)}
       </section>
-      <section id={'products'} className={'container-content py-16 group min-h-[100vh]'}>
+      <section id={'products'} className={'text-center container-content py-16 group min-h-[100vh]'}>
         <div className={'flex flex-col gap-5 px-6'}>
           <Reveal variant={'top'}>
             <h2 className={'text-center text-4xl font-extrabold'}>{t('section.3.title')}</h2>
+            <h3 className={'text-center text-xl font-thin pt-4'}>{t('section.3.subsection_title')}</h3>
           </Reveal>
           <Reveal variant={'bottom'}>
             <Carousel
@@ -89,6 +90,7 @@ export default function MainTemplates() {
               onMouseEnter={plugin.current.stop}
               onMouseLeave={plugin.current.reset}
             >
+              <CarouselPrevious />
               <CarouselContent>
                 {dataSection3.map(({ video, title }, index) => (
                   <CarouselItem key={index}>
@@ -114,23 +116,19 @@ export default function MainTemplates() {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious className={'hidden group-hover:inline-flex'} />
-              <CarouselNext className={'hidden group-hover:inline-flex'} />
+              <CarouselNext />
             </Carousel>
           </Reveal>
         </div>
       </section>
       <section
         id={'contact'}
-        className={'container-content py-16 group min-h-[100vh] flex justify-center items-center'}
+        className={'container-content py-16 group min-h-[100vh] flex justify-center items-center text-center'}
       >
         <div className={'flex flex-col gap-5 px-6'}>
           <div className={'text-center flex flex-col gap-5 justify-center items-center'}>
             <Reveal variant={'left'}>
               <h2 className={'text-4xl font-extrabold'}>{t('section.4.title')}</h2>
-            </Reveal>
-            <Reveal variant={'right'}>
-              <p className={'text-xl text-color max-w-[824px]'}>{t('section.4.description')}</p>
             </Reveal>
           </div>
           <Reveal variant={'bottom'}>
@@ -220,11 +218,6 @@ export default function MainTemplates() {
 const sectionTwo = (isLid: boolean, t: (value: string) => string) => {
   return (
     <div className={cn('flex flex-col', isLid ? 'gap-16' : 'gap-20')}>
-      <Reveal variant={'left'}>
-        <h2 className={cn('text-center', isLid ? 'text-3xl font-bold' : 'text-4xl font-extrabold')}>
-          {t('section.2.title')}
-        </h2>
-      </Reveal>
       {dataSection2(t).map(({ image, content }, index) => (
         <div key={index} className={cn('grid grid-cols-1 md:grid-cols-2', isLid ? 'gap-8' : 'gap-10')}>
           <Reveal variant={'bottom'}>
@@ -254,33 +247,42 @@ const sectionTwo = (isLid: boolean, t: (value: string) => string) => {
 
 const dataSection2 = (t: (value: string) => string) => [
   {
-    image: '/images/thumbnail/1.svg',
+    image: '/images/thumbnail/2.svg',
     content: (
-      <p className={'text-color'}>
-        {t('section.2.content.first.1')}
-        <br />
-        {t('section.2.content.first.2')}
-      </p>
+      <div>
+        <h2 className='text-3xl pb-4 font-extrabold'>{t('section.2.first.1')}</h2>
+        <p className={'text-color'}>
+          {t('section.2.first.2')}
+          <br />
+          {t('section.2.first.3')}
+        </p>
+      </div>
     )
   },
   {
-    image: '/images/thumbnail/2.svg',
+    image: '/images/thumbnail/1.svg',
     content: (
-      <p className={'text-color'}>
-        {t('section.2.content.second.1')}
-        <br />
-        {t('section.2.content.second.2')}
-      </p>
+      <div>
+        <h2 className='text-3xl pb-4 font-extrabold'>{t('section.2.second.1')}</h2>
+        <p className={'text-color'}>
+          {t('section.2.second.2')}
+          <br />
+          {t('section.2.second.3')}
+        </p>
+      </div>
     )
   },
   {
     image: '/images/thumbnail/3.svg',
     content: (
-      <p className={'text-color'}>
-        {t('section.2.content.third.1')}
-        <br />
-        {t('section.2.content.third.2')}
-      </p>
+      <div>
+        <h2 className='text-3xl pb-4 font-extrabold'>{t('section.2.third.1')}</h2>
+        <p className={'text-color'}>
+          {t('section.2.third.2')}
+          <br />
+          {t('section.2.third.3')}
+        </p>
+      </div>
     )
   }
 ]
@@ -288,7 +290,7 @@ const dataSection2 = (t: (value: string) => string) => [
 const dataSection3 = [
   {
     title: 'OTOMATA task automation',
-    video: 'https://www.youtube.com/embed/JgflLii5MbM?si=QSh7m0kc7Pa45BBD'
+    video: 'https://www.youtube.com/embed/rn6UNJQXBgM?si=TeOMb3Ztz2kJYkB8'
   },
   {
     title: 'OTOMATA form filler',

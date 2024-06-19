@@ -5,33 +5,33 @@
     },
     "section": {
       "1": {
-        "title": "Đêm OT ta đi ăn \uD83C\uDF5C",
+        "title": "Đêm OT ta đi luộc \uD83C\uDF5C",
         "sub-title": "Task gì việc gì tool này lo hết",
-        "description": "OTOMATA là dự án freelance được ra đời để giúp \uD83D\uDCAA các anh chị em văn phòng tự động hoá những công việc văn phòng trong công ty, chỉ với vài ngày lương và vài cú click."
+        "description": "OTOMATA là dự án freelance giúp nhân viên văn phòng tự động hoá công  việc một cách dễ dàng."
       },
       "2": {
-        "title": "OTOMATA sẽ làm gì cho bạn ?",
-        "content": {
-          "first": {
-            "1": "Chạy luồng công việc phức tạp với tool được thiết kế riêng cho bạn hoặc công ty bạn, với quy trình dễ hiểu và đơn giản.",
-            "2": "Bạn đặt lịch tư vấn, đợi mình làm xong app giao cho bạn, bạn nhập liệu, bạn cấu hình tool rồi bấm nút chạy."
-          },
-          "second": {
-            "1": "Tự động hoá những quy trình, nghiệp vụ thủ công bạn phải làm đi làm lại quanh năm suốt tháng.",
-            "2": "Có thể tự động hoá những quy trình ngõ ngách mà những sản phẩm tự động hoá trên thị trường chưa có làm được."
-          },
-          "third": {
-            "1": "Bảo hành 3 tháng sau khi giao tool.",
-            "2": "Được hỗ trợ 30% chi phí thiết kế lại tool khi task văn phòng bạn có xảy ra thay đổi."
-          }
+        "first": {
+          "1": "OTOMATA có thể chạy: ",
+          "2": "Công việc hành chính thường gặp ở văn phòng.",
+          "3": "Các quy trình kinh doanh đặc thù của công ty bạn."
+        },
+        "second": {
+          "1": "Quy trình giao hàng đơn giản",
+          "2": "Bạn đặt lịch tư vấn và nhận báo giá.",
+          "3": "Khi nhận tool, bạn nhập dữ liệu vào tool rồi bấm 'chạy'."
+        },
+        "third": {
+          "1": "Chính sách hậu mãi",
+          "2": "Bảo hành 1 tháng sau khi giao tool.",
+          "3": "Hỗ trợ 30% chi phí thiết kế lại tool."
         }
       },
       "3": {
-        "title": "Các sản phẩm đã làm cho khách"
+        "title": "Các sản phẩm đã làm cho khách",
+        "subsection_title": "Hãy bật phụ đề lên để mình thuyết minh nội dung demo nhé."
       },
       "4": {
         "title": "Bạn có sẵn sàng trò chuyện với chúng tôi?",
-        "description": "Dù bạn đang gặp trường hợp khẩn cấp cần giải pháp nhanh chóng, hay chỉ quan tâm đến việc thảo luận về cách nền tảng có thể hỗ trợ trong tương lai, chúng tôi luôn sẵn sàng trò chuyện.",
         "form": {
           "full-name": {
             "label": "Họ và tên",

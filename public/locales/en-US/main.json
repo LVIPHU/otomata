@@ -5,33 +5,33 @@
     },
     "section": {
       "1": {
-        "title": "OT Night Out \uD83C\uDF5C",
-        "sub-title": "No worries about tasks, this tool handles everything",
-        "description": "OTOMATA is a freelance project born to help \uD83D\uDCAA office workers automate office tasks in their company, with just a few days' salary and a few clicks."
+        "title": "Late nights we cook with ease,",
+        "sub-title": "Tasks and work handled, no need to please.",
+        "description": "OTOMATA is a freelance project that helps office workers automate tasks with minimal effort."
       },
       "2": {
-        "title": "What will OTOMATA do for you?",
-        "content": {
-          "first": {
-            "1": "Run complex workflows with tools designed specifically for you or your company, with easy-to-understand and simple processes.",
-            "2": "You schedule a consultation, wait for me to finish the app and deliver it to you, you enter the data, configure the tool, and then press the run button."
-          },
-          "second": {
-            "1": "Automate the manual processes and tasks you have to repeat year-round.",
-            "2": "Can automate niche processes that current market automation products can't handle."
-          },
-          "third": {
-            "1": "3-month warranty after delivering the tool.",
-            "2": "Get 30% off the cost of redesigning the tool when your office tasks change."
-          }
+        "first": {
+          "1": "What OTOMATA will automate",
+          "2": "Repeated, labor-intensive administrative tasks",
+          "3": "Business processes specific to your company."
+        },
+        "second": {
+          "1": "Smooth delivery process",
+          "2": "Simply schedule a meeting and receive a quote.",
+          "3": "Get the app, feed it data then hit Run."
+        },
+        "third": {
+          "1": "After sales service",
+          "2": "1-month warranty.",
+          "3": "30% discount for future redesigns."
         }
       },
       "3": {
-        "title": "Products made for clients"
+        "title": "Projects made for clients so far",
+        "subsection_title": "Remember to turn on CC and I'll explain."
       },
       "4": {
         "title": "Ready to talk?",
-        "description": "Whether you've got an emergency that requires a rapid solution, or just interested in discussing how the platform might stop on in the future, we're here to talk.",
         "form": {
           "full-name": {
             "label": "Full name",
