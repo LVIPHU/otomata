@@ -55,6 +55,23 @@
           }
         }
       }
+    },
+    "presentation": {
+      "useCase": "Use Case",
+      "timeSpentOnCase": "Time Spent on Case",
+      "serviceValue": "Service value",
+      "projects": {
+        "task_automation": {
+          "useCase": "Translation to be added.",
+          "timeSpentOnCase": "Translation to be added",
+          "serviceValue": "Translation to be added"
+        },
+        "form_filler": {
+          "useCase": "Translation to be added.",
+          "timeSpentOnCase": "Translation to be added",
+          "serviceValue": "Translation to be added"
+        }
+      }
     }
   }
 }

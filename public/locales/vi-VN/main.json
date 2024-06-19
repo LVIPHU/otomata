@@ -12,7 +12,7 @@
       "2": {
         "first": {
           "1": "OTOMATA có thể chạy: ",
-          "2": "Công việc hành chính thường gặp ở văn phòng.",
+          "2": "Các công việc hành chính thường gặp ở văn phòng.",
           "3": "Các quy trình kinh doanh đặc thù của công ty bạn."
         },
         "second": {
@@ -53,6 +53,23 @@
             "label": "Tin nhắn",
             "placeholder": "Chúng tôi có thể giúp gì cho bạn?"
           }
+        }
+      }
+    },
+    "presentation": {
+      "useCase": "Case Study",
+      "timeSpentOnCase": "Thời gian khách thực hiện task",
+      "serviceValue": "Giá trị tool mang về",
+      "projects": {
+        "task_automation": {
+          "useCase": "Khách lập danh sách các điểm bán hàng trên Excel và phải nhập tên từng điểm một vào form thông tin nhà phân phối thuộc khu vực điểm bán đó",
+          "timeSpentOnCase": "Chỉ riêng khâu nhập liệu thì thời gian làm task dao động từ 1 đến 2 tiếng một lần. Mỗi tuần tối đa phải làm 4 lần",
+          "serviceValue": "Tiết kiệm 2 đến 4 tiếng làm việc. Có thể làm việc khác trong khi tool chạy task trên cloud"
+        },
+        "form_filler": {
+          "useCase": "Khách nhận file dữ liệu hỗ trợ khách hàng trên Zalo từ team khác và phải điền data đúng định dạng theo yêu cầu của form",
+          "timeSpentOnCase": "Thời gian làm task này dao động từ nửa tiếng đến 1 giờ",
+          "serviceValue": "Sau khi có tool bạn tiết kiệm được 1 đến 2 giờ làm việc"
         }
       }
     }

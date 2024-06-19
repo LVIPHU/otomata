@@ -85,7 +85,7 @@ export default function MainTemplates() {
           </Reveal>
           <Carousel plugins={[plugin.current]} onMouseEnter={plugin.current.stop} onMouseLeave={plugin.current.reset}>
             <CarouselContent>
-              {dataSection3.map(({ video, title }, index) => (
+              {dataSection3(t).map(({ video, title, useCase, timeSpentOnCase, serviceValue }, index) => (
                 <CarouselItem key={index}>
                   <div className='p-1'>
                     <Card>
@@ -103,6 +103,24 @@ export default function MainTemplates() {
                           referrerPolicy='strict-origin-when-cross-origin'
                           allowFullScreen
                         ></iframe>
+                      </CardContent>
+                      <CardContent>
+                        <table className="table-auto w-full sm:w-auto lg:m-8 md:m-4 sm:m-2 mt-6">
+                          <tbody className="align-text-top text-left">
+                            <tr className='border-black border-b-2 border-opacity-40'>
+                              <td className="font-bold pr-4 sm:pr-2 w-1/2 sm:w-1/4">{t("presentation.useCase")}</td>
+                              <td className="pr-4 sm:pr-2 w-1/2 sm:w-3/4">{useCase}</td>
+                            </tr>
+                            <tr className='border-black border-b-2 border-opacity-40'>
+                              <td className="font-bold pr-4 sm:pr-2 w-1/2 sm:w-1/4">{t("presentation.timeSpentOnCase")}</td>
+                              <td className="pr-4 sm:pr-2 w-1/2 sm:w-3/4">{timeSpentOnCase}</td>
+                            </tr>
+                            <tr>
+                              <td className="font-bold pr-4 sm:pr-2 w-1/2 sm:w-1/4">{t("presentation.serviceValue")}</td>
+                              <td className="pr-4 sm:pr-2 w-1/2 sm:w-3/4">{serviceValue}</td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </CardContent>
                     </Card>
                   </div>
@@ -242,51 +260,57 @@ const dataSection2 = (t: (value: string) => string) => [
   {
     image: '/images/thumbnail/2.svg',
     content: (
-      <div>
+      <>
         <h2 className='text-3xl pb-4 font-extrabold'>{t('section.2.first.1')}</h2>
         <p className={'text-color'}>
           {t('section.2.first.2')}
           <br />
           {t('section.2.first.3')}
         </p>
-      </div>
+      </>
     )
   },
   {
     image: '/images/thumbnail/1.svg',
     content: (
-      <div>
+      <>
         <h2 className='text-3xl pb-4 font-extrabold'>{t('section.2.second.1')}</h2>
         <p className={'text-color'}>
           {t('section.2.second.2')}
           <br />
           {t('section.2.second.3')}
         </p>
-      </div>
+      </>
     )
   },
   {
     image: '/images/thumbnail/3.svg',
     content: (
-      <div>
+      <>
         <h2 className='text-3xl pb-4 font-extrabold'>{t('section.2.third.1')}</h2>
         <p className={'text-color'}>
           {t('section.2.third.2')}
           <br />
           {t('section.2.third.3')}
         </p>
-      </div>
+      </>
     )
   }
 ]
 
-const dataSection3 = [
+const dataSection3 = (t: (value: string) => string) => [
   {
     title: 'OTOMATA task automation',
-    video: 'https://www.youtube.com/embed/rn6UNJQXBgM?si=TeOMb3Ztz2kJYkB8'
+    video: 'https://www.youtube.com/embed/rn6UNJQXBgM?si=TeOMb3Ztz2kJYkB8',
+    useCase: t("presentation.projects.task_automation.useCase"),
+    timeSpentOnCase: t("presentation.projects.task_automation.timeSpentOnCase"),
+    serviceValue: t("presentation.projects.task_automation.serviceValue")
   },
   {
     title: 'OTOMATA form filler',
-    video: 'https://www.youtube.com/embed/rEvjrCESMpc?si=r-zT3jQpQuXTTfIF'
+    video: 'https://www.youtube.com/embed/zdllizcuoXY?si=K04_uwmLNGDhCSxt',
+    useCase: t("presentation.projects.form_filler.useCase"),
+    timeSpentOnCase: t("presentation.projects.form_filler.timeSpentOnCase"),
+    serviceValue: t("presentation.projects.form_filler.serviceValue")
   }
 ]
