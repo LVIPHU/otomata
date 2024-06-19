@@ -51,7 +51,7 @@ export default function MainTemplates() {
   }, [pathname, searchParams])
 
   async function onSubmit(values: ContactBodyType) {
-      console.log('values contact', values)
+    console.log('values contact', values)
   }
 
   return (
@@ -77,47 +77,40 @@ export default function MainTemplates() {
       <section id={'solution'} className={'container-content py-16 md:py-24'}>
         {sectionTwo(false, t)}
       </section>
-      <section id={'products'} className={'container-content py-16 group min-h-[100vh]'}>
+      <section id={'products'} className={'container-content py-16 min-h-[100vh]'}>
         <div className={'flex flex-col gap-5 px-6'}>
           <Reveal variant={'top'}>
             <h2 className={'text-center text-4xl font-extrabold'}>{t('section.3.title')}</h2>
           </Reveal>
-          <Reveal variant={'bottom'}>
-            <Carousel
-              plugins={[plugin.current]}
-              className='w-full'
-              onMouseEnter={plugin.current.stop}
-              onMouseLeave={plugin.current.reset}
-            >
-              <CarouselContent>
-                {dataSection3.map(({ video, title }, index) => (
-                  <CarouselItem key={index}>
-                    <div className='p-1'>
-                      <Card>
-                        <CardHeader>
-                          <CardTitle>{title}</CardTitle>
-                        </CardHeader>
-                        <CardContent className={'relative h-[70vh]'}>
-                          <iframe
-                            className={'absolute top-0 left-0 w-full h-full'}
-                            width='560'
-                            height='320'
-                            src={video}
-                            title={title}
-                            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-                            referrerPolicy='strict-origin-when-cross-origin'
-                            allowFullScreen
-                          ></iframe>
-                        </CardContent>
-                      </Card>
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious className={'hidden group-hover:inline-flex'} />
-              <CarouselNext className={'hidden group-hover:inline-flex'} />
-            </Carousel>
-          </Reveal>
+          <Carousel plugins={[plugin.current]} onMouseEnter={plugin.current.stop} onMouseLeave={plugin.current.reset}>
+            <CarouselContent>
+              {dataSection3.map(({ video, title }, index) => (
+                <CarouselItem key={index}>
+                  <div className='p-1'>
+                    <Card>
+                      <CardHeader>
+                        <CardTitle>{title}</CardTitle>
+                      </CardHeader>
+                      <CardContent className={'relative h-[70vh]'}>
+                        <iframe
+                          className={'absolute top-0 left-0 w-full h-full'}
+                          width='560'
+                          height='320'
+                          src={video}
+                          title={title}
+                          allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+                          referrerPolicy='strict-origin-when-cross-origin'
+                          allowFullScreen
+                        ></iframe>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
         </div>
       </section>
       <section
