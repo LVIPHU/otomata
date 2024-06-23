@@ -74,7 +74,7 @@ export default function MainTemplates() {
           showGradient={false}
         />
       </div>
-      <section id={'solution'} className={'container-content py-16 md:py-24 text-center'}>
+      <section id={'intro'} className={'container-content py-16 md:py-24 text-center'}>
         {sectionTwo(false, t)}
       </section>
       <section id={'products'} className={'text-center container-content py-16 group min-h-[100vh]'}>
@@ -131,6 +131,9 @@ export default function MainTemplates() {
             <CarouselNext />
           </Carousel>
         </div>
+      </section>
+      <section id={'warranty'} className={'container-content py-16 md:py-24 text-center'}>
+        {sectionTwo(false, t, 2, 3)}
       </section>
       <section
         id={'contact'}
@@ -226,10 +229,15 @@ export default function MainTemplates() {
   )
 }
 
-const sectionTwo = (isLid: boolean, t: (value: string) => string) => {
+const sectionTwo = (isLid: boolean, t: (value: string) => string, startIndex?: number | null, endIndex?: number | null) => {
+  let dataSection = dataSection2(t)
+
   return (
     <div className={cn('flex flex-col', isLid ? 'gap-16' : 'gap-20')}>
-      {dataSection2(t).map(({ image, content }, index) => (
+      {dataSection.slice(
+        startIndex || 0,
+        endIndex || dataSection.length - 1
+      ).map(({ image, content }, index) => (
         <div key={index} className={cn('grid grid-cols-1 md:grid-cols-2', isLid ? 'gap-8' : 'gap-10')}>
           <Reveal variant={'bottom'}>
             <Image

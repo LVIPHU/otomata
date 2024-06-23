@@ -5,29 +5,29 @@
     },
     "section": {
       "1": {
-        "title": "Đêm OT ta đi luộc \uD83C\uDF5C",
+        "title": "Đêm OT ta đi luộc mì \uD83C\uDF5C",
         "sub-title": "Task gì việc gì tool này lo hết",
-        "description": "OTOMATA là dự án freelance giúp nhân viên văn phòng tự động hoá công  việc một cách dễ dàng."
+        "description": "OTOMATA là một dự án freelance chuyên thiết kế và cung cấp giải pháp tự động hoá cho các nhân viên văn phòng, giúp tối ưu hoá quy trình công việc hành chính một cách tự động và hiệu quả."
       },
       "2": {
         "first": {
-          "1": "OTOMATA có thể chạy: ",
-          "2": "Các công việc hành chính thường gặp ở văn phòng.",
-          "3": "Các quy trình kinh doanh đặc thù của công ty bạn."
+          "1": "Giải phóng thời gian làm việc với OTOMATA",
+          "2": "Tự động hoá các tác vụ hành chính thường gặp ở văn phòng như là lập báo cáo, xử lý email, tạo hoá đơn, v.v.",
+          "3": "Tự động hoá các quy trình kinh doanh đặc thù của doanh nghiệp một cách linh hoạt và hiệu quả."
         },
         "second": {
-          "1": "Quy trình giao hàng đơn giản",
-          "2": "Bạn đặt lịch tư vấn và nhận báo giá.",
-          "3": "Khi nhận tool, bạn nhập dữ liệu vào tool rồi bấm 'chạy'."
+          "1": "Quy trình triển khai đơn giản và nhanh chóng",
+          "2": "Liên hệ với chúng tôi để đặt lịch tư vấn miễn phí và nhận báo giá trong vòng 1 tuần.",
+          "3": "Khi nhận tool bạn chỉ cần nhập liệu, cài đặt cách chạy và bấm nút Chạy."
         },
         "third": {
-          "1": "Chính sách hậu mãi",
+          "1": "Chính sách hậu mãi uy tín",
           "2": "Bảo hành 1 tháng sau khi giao tool.",
-          "3": "Hỗ trợ 30% chi phí thiết kế lại tool."
+          "3": "Hỗ trợ 30% chi phí thiết kế lại tool nếu quy trình làm việc thay đổi trong vòng 3 tháng."
         }
       },
       "3": {
-        "title": "Các sản phẩm đã làm cho khách",
+        "title": "Các sản phẩm OTOMATA đã thực hiện cho khách",
         "subsection_title": "Hãy bật phụ đề lên để mình thuyết minh nội dung demo nhé."
       },
       "4": {
@@ -62,9 +62,9 @@
       "serviceValue": "Giá trị tool mang về",
       "projects": {
         "task_automation": {
-          "useCase": "Khách lập danh sách các điểm bán hàng trên Excel và phải nhập tên từng điểm một vào form thông tin nhà phân phối thuộc khu vực điểm bán đó",
+          "useCase": "Một bạn khách đã gặp nhiều khó khăn trong việc quản lý danh sách điểm bán hàng. Bạn ấy phải lập danh sách trên Excel và nhập tên từng điểm bán một vào form thông tin nhà phân phối thuộc khu vực điểm bán đó.",
           "timeSpentOnCase": "Chỉ riêng khâu nhập liệu thì thời gian làm task dao động từ 1 đến 2 tiếng một lần. Mỗi tuần tối đa phải làm 4 lần",
-          "serviceValue": "Tiết kiệm 2 đến 4 tiếng làm việc. Có thể làm việc khác trong khi tool chạy task trên cloud"
+          "serviceValue": "Bạn ấy tiết kiệm 4 đến 8 tiếng làm việc mỗi tuần. Có thể làm việc khác trong khi tool chạy task trên cloud."
         },
         "form_filler": {
           "useCase": "Khách nhận file dữ liệu hỗ trợ khách hàng trên Zalo từ team khác và phải điền data đúng định dạng theo yêu cầu của form",
